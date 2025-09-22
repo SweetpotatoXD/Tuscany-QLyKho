@@ -13,66 +13,116 @@
     <a class="item" href="TrangChu.html">Trang chủ</a>
     <a class="item" href="Nhap.html">Nhập kho</a>
     <a class="item" href="Xuat.html">Xuất kho</a>
-    <a class="item active" href="NhanVien.html">Nhân viên</a>
+    <a class="item" href="NhanVien.html">Nhân viên</a>
     <a class="item" href="KhachHang.html">Khách hàng</a>
     <a class="item" href="HoaDon.html">Hóa đơn</a>
     <a class="item" href="BaoCao.html">Báo cáo</a>
-  </div> 
+    <div class="right menu" id="authMenu"></div>
+  </div>
 
-  <div class="ui container" style="margin-top:20px;">
-    <h2 class="ui header">📥 Quản lý nhập kho</h2>
-    
-    <!-- Form nhập kho -->
-    <form class="ui form" id="formNhap">
-      <div class="two fields">
-        <div class="field">
-          <label>Mã sản phẩm</label>
-          <input type="text" id="maSP" placeholder="SP001" required>
+  <div class="ui container" style="margin-top: 20px;">
+    <h2 class="ui header">📥 Phiếu nhập kho</h2>
+
+    <!-- Form nhập phiếu -->
+    <form class="ui form">
+      <div class="fields">
+        <div class="eight wide field">
+          <label>Mã phiếu nhập</label>
+          <input type="text" placeholder="PN001" required>
         </div>
-        <div class="field">
-          <label>Số lượng</label>
-          <input type="number" id="soLuong" placeholder="100" required>
+        <div class="eight wide field">
+          <label>Ngày nhập</label>
+          <input type="date" required>
         </div>
       </div>
-      <button type="submit" class="ui primary button">Thêm</button>
+      <div class="fields">
+        <div class="eight wide field">
+          <label>Mã nhân viên nhập</label>
+          <input type="text" placeholder="NV001" required>
+        </div>
+        <div class="eight wide field">
+          <label>Mã NCC/Khách hàng</label>
+          <input type="text" placeholder="SUP001 / KH001">
+        </div>
+      </div>
+      <div class="field">
+        <label>Ghi chú</label>
+        <textarea rows="2"></textarea>
+      </div>
     </form>
 
-    <!-- Bảng danh sách nhập -->
-    <h3 class="ui dividing header" style="margin-top:30px;">Danh sách nhập</h3>
-    <table class="ui celled table" id="tableNhap">
+    <!-- Thêm sản phẩm -->
+    <h3 class="ui dividing header">Danh sách sản phẩm nhập</h3>
+    <div class="ui form">
+      <div class="fields">
+        <div class="four wide field">
+          <input type="text" placeholder="Mã SP">
+        </div>
+        <div class="four wide field">
+          <input type="number" placeholder="Số lượng">
+        </div>
+        <div class="four wide field">
+          <input type="number" placeholder="Đơn giá">
+        </div>
+        <div class="four wide field">
+          <button class="ui green button" type="button">+ Thêm sản phẩm</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bảng danh sách sản phẩm -->
+    <table class="ui celled table">
       <thead>
         <tr>
           <th>Mã SP</th>
           <th>Số lượng</th>
-          <th>Ngày nhập</th>
+          <th>Đơn giá</th>
+          <th>Thành tiền</th>
+          <th>Hành động</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>SP001</td>
-          <td>100</td>
-          <td>22/09/2025</td>
+          <td>10</td>
+          <td>200,000 đ</td>
+          <td>2,000,000 đ</td>
+          <td><button class="ui red mini button">Xóa</button></td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="3">Tổng cộng</th>
+          <th>2,000,000 đ</th>
+          <th></th>
+        </tr>
+      </tfoot>
     </table>
+
+    <button class="ui primary button">💾 Lưu phiếu nhập</button>
   </div>
 
+  <!-- Đăng nhập -->
   <script>
-    document.getElementById("formNhap").addEventListener("submit", function(e){
-      e.preventDefault();
-      const maSP = document.getElementById("maSP").value;
-      const soLuong = document.getElementById("soLuong").value;
-      const ngay = new Date().toLocaleDateString("vi-VN");
+    const authMenu = document.getElementById("authMenu");
 
-      const table = document.getElementById("tableNhap").getElementsByTagName("tbody")[0];
-      const newRow = table.insertRow();
-      newRow.insertCell(0).innerText = maSP;
-      newRow.insertCell(1).innerText = soLuong;
-      newRow.insertCell(2).innerText = ngay;
+    // Kiểm tra trạng thái đăng nhập
+    function renderAuthMenu(){
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
 
-      // Reset form
-      document.getElementById("formNhap").reset();
-    });
+      if(isLoggedIn === "true"){
+        authMenu.innerHTML = '<a class="item" href="#" id="logoutBtn">Đăng xuất</a>';
+        document.getElementById("logoutBtn").addEventListener("click", function(){
+          localStorage.removeItem("isLoggedIn");
+          alert("Bạn đã đăng xuất!");
+          window.location.href = "DangNhap.html"; 
+        });
+      } else {
+        authMenu.innerHTML = '<a class="item" href="DangNhap.html">Đăng nhập</a>';
+      }
+    }
+
+    renderAuthMenu();
   </script>
 </body>
 </html>

@@ -12,10 +12,11 @@
     <a class="item" href="TrangChu.html">Trang chủ</a>
     <a class="item" href="Nhap.html">Nhập kho</a>
     <a class="item" href="Xuat.html">Xuất kho</a>
-    <a class="item active" href="NhanVien.html">Nhân viên</a>
+    <a class="item" href="NhanVien.html">Nhân viên</a>
     <a class="item" href="KhachHang.html">Khách hàng</a>
     <a class="item" href="HoaDon.html">Hóa đơn</a>
     <a class="item" href="BaoCao.html">Báo cáo</a>
+    <div class="right menu" id="authMenu"></div>
   </div>
 
 
@@ -73,6 +74,29 @@
       <tbody></tbody>
     </table>
   </div>
+
+    <!-- Đăng nhập -->
+  <script>
+    const authMenu = document.getElementById("authMenu");
+
+    // Kiểm tra trạng thái đăng nhập
+    function renderAuthMenu(){
+      const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if(isLoggedIn === "true"){
+        authMenu.innerHTML = '<a class="item" href="#" id="logoutBtn">Đăng xuất</a>';
+        document.getElementById("logoutBtn").addEventListener("click", function(){
+          localStorage.removeItem("isLoggedIn");
+          alert("Bạn đã đăng xuất!");
+          window.location.href = "DangNhap.html"; 
+        });
+      } else {
+        authMenu.innerHTML = '<a class="item" href="DangNhap.html">Đăng nhập</a>';
+      }
+    }
+
+    renderAuthMenu();
+  </script>
 
   <script>
     let editingRow = null;
