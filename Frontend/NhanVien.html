@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhân viên - Quản lý kho</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+  <!-- Menu chính -->
+  <div class="ui inverted menu">
+    <a class="item" href="TrangChu.html">Trang chủ</a>
+    <a class="item" href="Nhap.html">Nhập kho</a>
+    <a class="item" href="Xuat.html">Xuất kho</a>
+    <a class="item active" href="NhanVien.html">Nhân viên</a>
+    <a class="item" href="KhachHang.html">Khách hàng</a>
+    <a class="item" href="HoaDon.html">Hóa đơn</a>
+    <a class="item" href="BaoCao.html">Báo Cáo</a>
+  </div>
+  
+  <div class="ui container" style="margin-top:20px;">
+    <h2 class="ui header">👨‍💼 Quản lý nhân viên</h2>
+    
+    <!-- Form thêm nhân viên -->
+    <form class="ui form" id="formNhanVien">
+      <div class="two fields">
+        <div class="field">
+          <label>Họ và tên</label>
+          <input type="text" id="tenNV" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="field">
+          <label>Chức vụ</label>
+          <input type="text" id="chucVu" placeholder="Thủ kho" required>
+        </div>
+      </div>
+      <button type="submit" class="ui primary button">Thêm nhân viên</button>
+    </form>
+
+    <!-- Bảng danh sách nhân viên -->
+    <h3 class="ui dividing header" style="margin-top:30px;">Danh sách nhân viên</h3>
+    <table class="ui celled table" id="tableNhanVien">
+      <thead>
+        <tr>
+          <th>Họ và tên</th>
+          <th>Chức vụ</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nguyễn Văn A</td>
+          <td>Thủ kho</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("formNhanVien").addEventListener("submit", function(e){
+      e.preventDefault();
+      const tenNV = document.getElementById("tenNV").value;
+      const chucVu = document.getElementById("chucVu").value;
+
+      const table = document.getElementById("tableNhanVien").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+      newRow.insertCell(0).innerText = tenNV;
+      newRow.insertCell(1).innerText = chucVu;
+
+      // Reset form
+      document.getElementById("formNhanVien").reset();
+    });
+  </script>
+</body>
+</html>

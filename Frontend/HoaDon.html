@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hóa đơn - Quản lý kho</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+  <!-- Menu chính -->
+  <div class="ui inverted menu">
+    <a class="item" href="TrangChu.html">Trang chủ</a>
+    <a class="item" href="Nhap.html">Nhập kho</a>
+    <a class="item" href="Xuat.html">Xuất kho</a>
+    <a class="item active" href="NhanVien.html">Nhân viên</a>
+    <a class="item" href="KhachHang.html">Khách hàng</a>
+    <a class="item" href="HoaDon.html">Hóa đơn</a>
+    <a class="item" href="BaoCao.html">Báo Cáo</a>
+  </div>
+
+  <div class="ui container" style="margin-top:20px;">
+    <h2 class="ui header">🧾 Quản lý hóa đơn</h2>
+    
+    <!-- Form thêm hóa đơn -->
+    <form class="ui form" id="formHoaDon">
+      <div class="three fields">
+        <div class="field">
+          <label>Mã hóa đơn</label>
+          <input type="text" id="maHD" placeholder="HD001" required>
+        </div>
+        <div class="field">
+          <label>Ngày lập</label>
+          <input type="date" id="ngayLap" required>
+        </div>
+        <div class="field">
+          <label>Mã số thuế</label>
+          <input type="text" id="maSoThue" placeholder="1234567890" required>
+        </div>
+      </div>
+
+      <div class="three fields">
+        <div class="field">
+          <label>Mã khách hàng</label>
+          <input type="text" id="maKH" placeholder="KH001" required>
+        </div>
+        <div class="field">
+          <label>Tổng tiền (VNĐ)</label>
+          <input type="number" id="tongTien" placeholder="5000000" required>
+        </div>
+        <div class="field">
+          <label>Trạng thái</label>
+          <select id="trangThai" class="ui dropdown" required>
+            <option value="">-- Chọn trạng thái --</option>
+            <option value="Đã thanh toán">Đã thanh toán</option>
+            <option value="Chưa thanh toán">Chưa thanh toán</option>
+            <option value="Hủy">Hủy</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" class="ui primary button">Thêm hóa đơn</button>
+    </form>
+
+    <!-- Bảng danh sách hóa đơn -->
+    <h3 class="ui dividing header" style="margin-top:30px;">Danh sách hóa đơn</h3>
+    <table class="ui celled table" id="tableHoaDon">
+      <thead>
+        <tr>
+          <th>Mã HĐ</th>
+          <th>Ngày lập</th>
+          <th>Mã số thuế</th>
+          <th>Mã KH</th>
+          <th>Tổng tiền</th>
+          <th>Trạng thái</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>HD001</td>
+          <td>2025-09-22</td>
+          <td>1234567890</td>
+          <td>KH001</td>
+          <td>5,000,000</td>
+          <td>Đã thanh toán</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("formHoaDon").addEventListener("submit", function(e){
+      e.preventDefault();
+      const maHD = document.getElementById("maHD").value;
+      const ngayLap = document.getElementById("ngayLap").value;
+      const maSoThue = document.getElementById("maSoThue").value;
+      const maKH = document.getElementById("maKH").value;
+      const tongTien = parseInt(document.getElementById("tongTien").value).toLocaleString('vi-VN');
+      const trangThai = document.getElementById("trangThai").value;
+
+      const table = document.getElementById("tableHoaDon").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+      newRow.insertCell(0).innerText = maHD;
+      newRow.insertCell(1).innerText = ngayLap;
+      newRow.insertCell(2).innerText = maSoThue;
+      newRow.insertCell(3).innerText = maKH;
+      newRow.insertCell(4).innerText = tongTien;
+      newRow.insertCell(5).innerText = trangThai;
+
+      // Reset form
+      document.getElementById("formHoaDon").reset();
+    });
+  </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Website Quản Lý Kho</title>
+  <title>Báo cáo - Quản lý kho</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
@@ -19,54 +19,56 @@
     <a class="item" href="BaoCao.html">Báo Cáo</a>
   </div>
 
-
-  <!-- Nội dung chính -->
-  <div class="ui container" style="margin-top: 20px;">
-    <h2 class="ui header">📦 Dashboard Quản Lý Kho</h2>
+  <div class="ui container" style="margin-top:20px;">
+    <h2 class="ui header">📊 Báo cáo thống kê</h2>
+    
+    <!-- Cards thống kê -->
     <div class="ui three stackable cards">
       <div class="card">
         <div class="content">
-          <div class="header">Số lượng hàng</div>
-          <div class="description">Tồn kho hiện tại: <b>1200</b> sản phẩm</div>
+          <div class="header">Tổng hóa đơn</div>
+          <div class="description"><b id="tongHoaDon">120</b> hóa đơn</div>
         </div>
       </div>
       <div class="card">
         <div class="content">
-          <div class="header">Đơn nhập hôm nay</div>
-          <div class="description"><b>5</b> đơn</div>
+          <div class="header">Hàng tồn kho</div>
+          <div class="description"><b id="hangTon">3500</b> sản phẩm</div>
         </div>
       </div>
       <div class="card">
         <div class="content">
-          <div class="header">Đơn xuất hôm nay</div>
-          <div class="description"><b>3</b> đơn</div>
+          <div class="header">Doanh thu</div>
+          <div class="description"><b id="doanhThu">1,250,000,000</b> VNĐ</div>
         </div>
       </div>
     </div>
 
-    <!-- Bảng dữ liệu mẫu -->
-    <h3 class="ui dividing header">Danh sách hàng tồn</h3>
-    <table class="ui celled table">
+    <!-- Bảng báo cáo doanh thu -->
+    <h3 class="ui dividing header" style="margin-top:30px;">Doanh thu theo tháng</h3>
+    <table class="ui celled table" id="tableBaoCao">
       <thead>
         <tr>
-          <th>Mã SP</th>
-          <th>Tên sản phẩm</th>
-          <th>Số lượng</th>
-          <th>Đơn vị</th>
+          <th>Tháng</th>
+          <th>Số hóa đơn</th>
+          <th>Doanh thu (VNĐ)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>SP001</td>
-          <td>Chuột Gaming</td>
-          <td>120</td>
-          <td>Cái</td>
+          <td>01/2025</td>
+          <td>45</td>
+          <td>320,000,000</td>
         </tr>
         <tr>
-          <td>SP002</td>
-          <td>Bàn phím cơ</td>
-          <td>85</td>
-          <td>Cái</td>
+          <td>02/2025</td>
+          <td>38</td>
+          <td>280,000,000</td>
+        </tr>
+        <tr>
+          <td>03/2025</td>
+          <td>37</td>
+          <td>310,000,000</td>
         </tr>
       </tbody>
     </table>
