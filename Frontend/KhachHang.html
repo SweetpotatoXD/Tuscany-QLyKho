@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lý Khách Hàng</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+  <!-- Menu -->
+  <div class="ui inverted menu">
+    <a class="item" href="index.html">Trang chủ</a>
+    <a class="item" href="nhapkho.html">Nhập kho</a>
+    <a class="item" href="xuatkho.html">Xuất kho</a>
+    <a class="item" href="nhanvien.html">Nhân viên</a>
+    <a class="item active" href="khachhang.html">Khách hàng</a>
+    <a class="item" href="hoadon.html">Hóa đơn</a>
+    <a class="item" href="baocao.html">Báo cáo</a>
+  </div>
+
+  <div class="ui container" style="margin-top: 20px;">
+    <h2 class="ui header">👥 Quản Lý Khách Hàng</h2>
+
+    <!-- Form khách hàng -->
+    <form class="ui form" id="customerForm">
+      <div class="fields">
+        <div class="field">
+          <label>Mã KH</label>
+          <input type="text" id="maKH" placeholder="KH001" required>
+        </div>
+        <div class="field">
+          <label>Họ tên / Công ty</label>
+          <input type="text" id="tenKH" placeholder="Nguyễn Văn B / Công ty XYZ" required>
+        </div>
+        <div class="field">
+          <label>Loại KH</label>
+          <select id="loaiKH" class="ui dropdown">
+            <option value="Cá nhân">Cá nhân</option>
+            <option value="Doanh nghiệp">Doanh nghiệp</option>
+          </select>
+        </div>
+      </div>
+      <div class="fields">
+        <div class="field">
+          <label>Số điện thoại</label>
+          <input type="text" id="soDT" placeholder="0903123456">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="kh.b@domain.com">
+        </div>
+        <div class="field">
+          <label>Địa chỉ</label>
+          <input type="text" id="diaChi" placeholder="TP.HCM">
+        </div>
+        <div class="field">
+          <label>Công nợ</label>
+          <input type="number" id="congNo" placeholder="0">
+        </div>
+      </div>
+      <button class="ui primary button" type="submit">Thêm / Cập nhật</button>
+      <button class="ui button" type="button" id="resetForm">Reset</button>
+    </form>
+
+    <!-- Danh sách khách hàng -->
+    <h3 class="ui dividing header" style="margin-top: 30px;">📑 Danh sách khách hàng</h3>
+    <table class="ui celled table" id="customerTable">
+      <thead>
+        <tr>
+          <th>Mã KH</th>
+          <th>Tên KH</th>
+          <th>Loại KH</th>
+          <th>SĐT</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th>Công nợ</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    let editingRow = null;
+
+    // Thêm / Cập nhật khách hàng
+    $("#customerForm").on("submit", function(e) {
+      e.preventDefault();
+
+      const maKH = $("#maKH").val();
+      const tenKH = $("#tenKH").val();
+      const loaiKH = $("#loaiKH").val();
+      const soDT = $("#soDT").val();
+      const email = $("#email").val();
+      const diaChi = $("#diaChi").val();
+      const congNo = $("#congNo").val();
+
+      if(editingRow) {
+        // Cập nhật
+        $(editingRow).find("td:eq(0)").text(maKH);
+        $(editingRow).find("td:eq(1)").text(tenKH);
+        $(editingRow).find("td:eq(2)").text(loaiKH);
+        $(editingRow).find("td:eq(3)").text(soDT);
+        $(editingRow).find("td:eq(4)").text(email);
+        $(editingRow).find("td:eq(5)").text(diaChi);
+        $(editingRow).find("td:eq(6)").text(congNo);
+        editingRow = null;
+      } else {
+        // Thêm khách hàng
+        $("#customerTable tbody").append(`
+          <tr>
+            <td>${maKH}</td>
+            <td>${tenKH}</td>
+            <td>${loaiKH}</td>
+            <td>${soDT}</td>
+            <td>${email}</td>
+            <td>${diaChi}</td>
+            <td>${congNo}</td>
+            <td>
+              <button class="ui blue button editBtn">Sửa</button>
+              <button class="ui red button deleteBtn">Xóa</button>
+            </td>
+          </tr>
+        `);
+      }
+
+      $("#customerForm")[0].reset();
+    });
+
+    // Reset form
+    $("#resetForm").on("click", function() {
+      $("#customerForm")[0].reset();
+      editingRow = null;
+    });
+
+    // Sửa khách hàng
+    $(document).on("click", ".editBtn", function() {
+      editingRow = $(this).closest("tr");
+      $("#maKH").val($(editingRow).find("td:eq(0)").text());
+      $("#tenKH").val($(editingRow).find("td:eq(1)").text());
+      $("#loaiKH").val($(editingRow).find("td:eq(2)").text());
+      $("#soDT").val($(editingRow).find("td:eq(3)").text());
+      $("#email").val($(editingRow).find("td:eq(4)").text());
+      $("#diaChi").val($(editingRow).find("td:eq(5)").text());
+      $("#congNo").val($(editingRow).find("td:eq(6)").text());
+    });
+
+    // Xóa khách hàng
+    $(document).on("click", ".deleteBtn", function() {
+      $(this).closest("tr").remove();
+    });
+  </script>
+</body>
+</html>

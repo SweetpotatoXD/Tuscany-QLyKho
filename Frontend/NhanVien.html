@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Quản Lý Nhân Viên</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+</head>
+<body>
+  <!-- Menu -->
+  <div class="ui inverted menu">
+    <a class="item" href="index.html">Trang chủ</a>
+    <a class="item" href="nhapkho.html">Nhập kho</a>
+    <a class="item" href="xuatkho.html">Xuất kho</a>
+    <a class="item active" href="nhanvien.html">Nhân viên</a>
+    <a class="item" href="khachhang.html">Khách hàng</a>
+    <a class="item" href="hoadon.html">Hóa đơn</a>
+    <a class="item" href="baocao.html">Báo cáo</a>
+  </div>
+
+  <div class="ui container" style="margin-top: 20px;">
+    <h2 class="ui header">👨‍💼 Quản Lý Nhân Viên</h2>
+
+    <!-- Form Nhân viên -->
+    <form class="ui form" id="employeeForm">
+      <div class="fields">
+        <div class="field">
+          <label>Mã NV</label>
+          <input type="text" id="maNV" placeholder="NV001" required>
+        </div>
+        <div class="field">
+          <label>Họ tên</label>
+          <input type="text" id="hoTen" placeholder="Nguyễn Văn A" required>
+        </div>
+        <div class="field">
+          <label>Chức vụ</label>
+          <input type="text" id="chucVu" placeholder="Nhân viên kho">
+        </div>
+      </div>
+      <div class="fields">
+        <div class="field">
+          <label>Số điện thoại</label>
+          <input type="text" id="soDT" placeholder="0912345678">
+        </div>
+        <div class="field">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="nv.a@company.com">
+        </div>
+        <div class="field">
+          <label>Địa chỉ</label>
+          <input type="text" id="diaChi" placeholder="TP.HCM">
+        </div>
+      </div>
+      <button class="ui primary button" type="submit">Thêm / Cập nhật</button>
+      <button class="ui button" type="button" id="resetForm">Reset</button>
+    </form>
+
+    <!-- Danh sách nhân viên -->
+    <h3 class="ui dividing header" style="margin-top: 30px;">📑 Danh sách nhân viên</h3>
+    <table class="ui celled table" id="employeeTable">
+      <thead>
+        <tr>
+          <th>Mã NV</th>
+          <th>Họ tên</th>
+          <th>Chức vụ</th>
+          <th>SĐT</th>
+          <th>Email</th>
+          <th>Địa chỉ</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    let editingRow = null;
+
+    // Thêm / Cập nhật nhân viên
+    $("#employeeForm").on("submit", function(e) {
+      e.preventDefault();
+
+      const maNV = $("#maNV").val();
+      const hoTen = $("#hoTen").val();
+      const chucVu = $("#chucVu").val();
+      const soDT = $("#soDT").val();
+      const email = $("#email").val();
+      const diaChi = $("#diaChi").val();
+
+      if(editingRow) {
+        // Cập nhật nhân viên
+        $(editingRow).find("td:eq(0)").text(maNV);
+        $(editingRow).find("td:eq(1)").text(hoTen);
+        $(editingRow).find("td:eq(2)").text(chucVu);
+        $(editingRow).find("td:eq(3)").text(soDT);
+        $(editingRow).find("td:eq(4)").text(email);
+        $(editingRow).find("td:eq(5)").text(diaChi);
+        editingRow = null;
+      } else {
+        // Thêm nhân viên mới
+        $("#employeeTable tbody").append(`
+          <tr>
+            <td>${maNV}</td>
+            <td>${hoTen}</td>
+            <td>${chucVu}</td>
+            <td>${soDT}</td>
+            <td>${email}</td>
+            <td>${diaChi}</td>
+            <td>
+              <button class="ui blue button editBtn">Sửa</button>
+              <button class="ui red button deleteBtn">Xóa</button>
+            </td>
+          </tr>
+        `);
+      }
+
+      $("#employeeForm")[0].reset();
+    });
+
+    // Nút Reset form
+    $("#resetForm").on("click", function() {
+      $("#employeeForm")[0].reset();
+      editingRow = null;
+    });
+
+    // Event Sửa
+    $(document).on("click", ".editBtn", function() {
+      editingRow = $(this).closest("tr");
+      $("#maNV").val($(editingRow).find("td:eq(0)").text());
+      $("#hoTen").val($(editingRow).find("td:eq(1)").text());
+      $("#chucVu").val($(editingRow).find("td:eq(2)").text());
+      $("#soDT").val($(editingRow).find("td:eq(3)").text());
+      $("#email").val($(editingRow).find("td:eq(4)").text());
+      $("#diaChi").val($(editingRow).find("td:eq(5)").text());
+    });
+
+    // Event Xóa
+    $(document).on("click", ".deleteBtn", function() {
+      $(this).closest("tr").remove();
+    });
+  </script>
+</body>
+</html>
