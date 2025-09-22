@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Quản Lý Kho</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+  <!-- Menu chính -->
+  <div class="ui inverted menu">
+    <a class="item active">Trang chủ</a>
+    <a class="item">Nhập kho</a>
+    <a class="item">Xuất kho</a>
+    <a class="item">Nhân viên</a>
+    <a class="item">Khách hàng</a>
+    <a class="item">Hóa đơn</a>
+    <a class="item">Báo cáo</a>
+  </div>
+
+  <!-- Nội dung chính -->
+  <div class="ui container" style="margin-top: 20px;">
+    <h2 class="ui header">📦 Dashboard Quản Lý Kho</h2>
+    <div class="ui three stackable cards">
+      <div class="card">
+        <div class="content">
+          <div class="header">Số lượng hàng</div>
+          <div class="description">Tồn kho hiện tại: <b>1200</b> sản phẩm</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="header">Đơn nhập hôm nay</div>
+          <div class="description"><b>5</b> đơn</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="content">
+          <div class="header">Đơn xuất hôm nay</div>
+          <div class="description"><b>3</b> đơn</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bảng dữ liệu mẫu -->
+    <h3 class="ui dividing header">Danh sách hàng tồn</h3>
+    <table class="ui celled table">
+      <thead>
+        <tr>
+          <th>Mã SP</th>
+          <th>Tên sản phẩm</th>
+          <th>Số lượng</th>
+          <th>Đơn vị</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SP001</td>
+          <td>Chuột Gaming</td>
+          <td>120</td>
+          <td>Cái</td>
+        </tr>
+        <tr>
+          <td>SP002</td>
+          <td>Bàn phím cơ</td>
+          <td>85</td>
+          <td>Cái</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
