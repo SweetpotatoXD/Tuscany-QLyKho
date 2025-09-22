@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhập kho - Quản lý kho</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+  <!-- Menu chính -->
+  <div class="ui inverted menu">
+    <a class="item" href="TrangChu.html">Trang chủ</a>
+    <a class="item" href="Nhap.html">Nhập kho</a>
+    <a class="item" href="Xuat.html">Xuất kho</a>
+    <a class="item active" href="NhanVien.html">Nhân viên</a>
+    <a class="item" href="KhachHang.html">Khách hàng</a>
+    <a class="item" href="HoaDon.html">Hóa đơn</a>
+    <a class="item" href="BaoCao.html">Báo Cáo</a>
+  </div>
+
+  <div class="ui container" style="margin-top:20px;">
+    <h2 class="ui header">📥 Quản lý nhập kho</h2>
+    
+    <!-- Form nhập kho -->
+    <form class="ui form" id="formNhap">
+      <div class="two fields">
+        <div class="field">
+          <label>Mã sản phẩm</label>
+          <input type="text" id="maSP" placeholder="SP001" required>
+        </div>
+        <div class="field">
+          <label>Số lượng</label>
+          <input type="number" id="soLuong" placeholder="100" required>
+        </div>
+      </div>
+      <button type="submit" class="ui primary button">Thêm</button>
+    </form>
+
+    <!-- Bảng danh sách nhập -->
+    <h3 class="ui dividing header" style="margin-top:30px;">Danh sách nhập</h3>
+    <table class="ui celled table" id="tableNhap">
+      <thead>
+        <tr>
+          <th>Mã SP</th>
+          <th>Số lượng</th>
+          <th>Ngày nhập</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SP001</td>
+          <td>100</td>
+          <td>22/09/2025</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    document.getElementById("formNhap").addEventListener("submit", function(e){
+      e.preventDefault();
+      const maSP = document.getElementById("maSP").value;
+      const soLuong = document.getElementById("soLuong").value;
+      const ngay = new Date().toLocaleDateString("vi-VN");
+
+      const table = document.getElementById("tableNhap").getElementsByTagName("tbody")[0];
+      const newRow = table.insertRow();
+      newRow.insertCell(0).innerText = maSP;
+      newRow.insertCell(1).innerText = soLuong;
+      newRow.insertCell(2).innerText = ngay;
+
+      // Reset form
+      document.getElementById("formNhap").reset();
+    });
+  </script>
+</body>
+</html>
