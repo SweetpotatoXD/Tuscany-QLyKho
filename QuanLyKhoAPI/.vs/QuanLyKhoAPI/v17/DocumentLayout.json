@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-26T08:27:01.649Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
