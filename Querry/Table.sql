@@ -32,6 +32,24 @@ CREATE TABLE Account(
 );
 GO
 
+CREATE TABLE Customer(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+	PhoneNumber NVARCHAR(15),
+    Name NVARCHAR(255) NOT NULL,               
+    CustomerType NVARCHAR(50) CHECK (CustomerType IN ('Cá nhân','Doanh nghiệp')), -- Loại KH
+    PhoneNumber VARCHAR(15) UNIQUE,
+    Email VARCHAR(255) UNIQUE,
+    Address NVARCHAR(255),
+    Debt INT DEFAULT 0, 
+
+    CreatedBy NVARCHAR(32),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    LastModifiedBy NVARCHAR(32),
+    LastModifiedDate DATETIME,
+    IsDeleted BIT DEFAULT 0
+);
+GO
+
 CREATE TABLE Supplier (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL, 
@@ -51,7 +69,8 @@ GO
 
 CREATE TABLE Product(
     Id INT IDENTITY(1,1) PRIMARY KEY,
-    Quantity INT DEFAULT 0 CHECK (Number >= 0),
+    Name NVARCHAR(255),
+    Quantity INT DEFAULT 0 CHECK (Quantity >= 0),
     Unit NVARCHAR(20),    
     
     CreatedBy NVARCHAR(32),
@@ -97,3 +116,52 @@ CREATE TABLE InboundDetail(
 );
 GO
 
+CREATE TABLE OutboundReceipt(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    ReceiptDate DATETIME,
+    EmployeeId INT,
+    CustomerId INT,
+    Note NVARCHAR(255),
+
+    CreatedBy NVARCHAR(32),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    LastModifiedBy NVARCHAR(32),
+    LastModifiedDate DATETIME,
+    IsDeleted BIT DEFAULT 0,
+
+    CONSTRAINT Fk_OutboundReceipt_Employee FOREIGN KEY EmployeeId REFERENCES Employee(Id),
+    CONSTRAINT Fk_OutboundReceipt_Customer FOREIGN KEY CustomerId REFERENCES Customer(Id)
+);
+GO
+
+CREATE TABLE OutboundDetail(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    OutboundReceiptId INT,
+    ProductId INT,
+    Quantity INT NOT NULL CHECK (Quantity > 0),
+    UnitPrice INT NOT NULL CHECK (UnitPrice > 0),
+    
+
+    CreatedBy NVARCHAR(32),
+    CreatedDate DATETIME DEFAULT GETDATE(),
+    LastModifiedBy NVARCHAR(32),
+    LastModifiedDate DATETIME,
+
+    
+    CONSTRAINT Fk_OutboundDetail_OutboundReceipt FOREIGN KEY (OutboundReceiptId) REFERENCES OutboundReceipt(Id),
+    CONSTRAINT Fk_OutboundDetail_Product FOREIGN KEY (ProductId) REFERENCES Product(Id)
+);
+GO
+
+CREATE TABLE AuditLog (
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Time DATETIME DEFAULT SYSUTCDATETIME(),
+    Operation NVARCHAR(16), -- 'INSERT', 'UPDATE', 'DELETE'
+    ChangeSource NVARCHAR(32),
+    Users NVARCHAR(32),
+    TableName NVARCHAR(64),
+    TableId NVARCHAR(64),
+    FieldChanges NVARCHAR(128),
+    Data NVARCHAR(2048) -- stored as JSON
+);
+GO
