@@ -3,11 +3,11 @@ CREATE PROCEDURE Employee_GetName
     @Id INT
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     SELECT Name
     FROM Employee
-    WHERE Id = @Id AND IsDeleted = 0;
+    WHERE Id = @Id AND IsDeleted = 0
 END
 GO
 
@@ -21,7 +21,7 @@ CREATE PROCEDURE Employee_Create
     @CreatedBy NVARCHAR(32)
 AS
 BEGIN
-    SET NOCOUNT ON;
+    SET NOCOUNT ON
 
     INSERT INTO Employee
     (
@@ -32,11 +32,7 @@ BEGIN
     (
         @Name, @Role, @PhoneNumber, @Email, @Address,
         @CreatedBy
-    );
-
-    SELECT Id, Name, Role, PhoneNumber, Email, Address, CreatedBy, CreatedDate
-    FROM Employee
-    WHERE Id = SCOPE_IDENTITY();
+    )
 END
 GO
 
@@ -52,9 +48,7 @@ CREATE PROCEDURE Employee_Read
     @CreatedDateEnd DATETIME = NULL,
     @LastModifiedBy NVARCHAR(32) = NULL,
     @LastModifiedDateStart DATETIME = NULL,
-    @LastModifiedDateEnd DATETIME = NULL,
-    @PageOffset INT = NULL,
-    @PageSize INT = NULL
+    @LastModifiedDateEnd DATETIME = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -77,8 +71,6 @@ BEGIN
         @LastModifiedBy NVARCHAR(32),
         @LastModifiedDateStart DATETIME,
         @LastModifiedDateEnd DATETIME,
-        @PageOffset INT,
-        @PageSize INT,
         @CreatedDateStartCalculated DATETIME,
         @CreatedDateEndCalculated DATETIME,
         @LastModifiedDateStartCalculated DATETIME,
@@ -112,9 +104,6 @@ BEGIN
     IF @LastModifiedDateEnd IS NOT NULL
         SET @Query += ' AND LastModifiedDate < @LastModifiedDateEndCalculated';
 
-    IF @PageSize IS NOT NULL AND @PageOffset IS NOT NULL
-        SET @Query += ' ORDER BY Id OFFSET @PageOffset ROWS FETCH NEXT @PageSize ROWS ONLY';
-
     EXEC sp_executesql
         @Query,
         @Var,
@@ -129,8 +118,6 @@ BEGIN
         @LastModifiedBy = @LastModifiedBy,
         @LastModifiedDateStart = @LastModifiedDateStart,
         @LastModifiedDateEnd = @LastModifiedDateEnd,
-        @PageOffset = @PageOffset,
-        @PageSize = @PageSize,
         @CreatedDateStartCalculated = @CreatedDateStartCalculated,
         @CreatedDateEndCalculated = @CreatedDateEndCalculated,
         @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
@@ -208,11 +195,7 @@ BEGIN
     VALUES
     (
         @EmployeeId, @Username, @PasswordHash, @IsAdmin, @CreatedBy
-    );
-
-    SELECT Id, EmployeeId, Username, PasswordHash, IsAdmin, CreatedBy, CreatedDate
-    FROM Account
-    WHERE Id = SCOPE_IDENTITY();
+    )
 END
 GO
 
@@ -227,9 +210,7 @@ CREATE PROCEDURE Account_Read
     @CreatedDateEnd DATETIME = NULL,
     @LastModifiedBy NVARCHAR(32) = NULL,
     @LastModifiedDateStart DATETIME = NULL,
-    @LastModifiedDateEnd DATETIME = NULL,
-    @PageOffset INT = NULL,
-    @PageSize INT = NULL
+    @LastModifiedDateEnd DATETIME = NULL
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -251,8 +232,6 @@ BEGIN
         @LastModifiedBy NVARCHAR(32),
         @LastModifiedDateStart DATETIME,
         @LastModifiedDateEnd DATETIME,
-        @PageOffset INT,
-        @PageSize INT,
         @CreatedDateStartCalculated DATETIME,
         @CreatedDateEndCalculated DATETIME,
         @LastModifiedDateStartCalculated DATETIME,
@@ -284,9 +263,6 @@ BEGIN
     IF @LastModifiedDateEnd IS NOT NULL
         SET @Query += ' AND LastModifiedDate < @LastModifiedDateEndCalculated';
 
-    IF @PageSize IS NOT NULL AND @PageOffset IS NOT NULL
-        SET @Query += ' ORDER BY Id OFFSET @PageOffset ROWS FETCH NEXT @PageSize ROWS ONLY';
-
     EXEC sp_executesql
         @Query,
         @Var,
@@ -300,8 +276,6 @@ BEGIN
         @LastModifiedBy = @LastModifiedBy,
         @LastModifiedDateStart = @LastModifiedDateStart,
         @LastModifiedDateEnd = @LastModifiedDateEnd,
-        @PageOffset = @PageOffset,
-        @PageSize = @PageSize,
         @CreatedDateStartCalculated = @CreatedDateStartCalculated,
         @CreatedDateEndCalculated = @CreatedDateEndCalculated,
         @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
@@ -319,8 +293,6 @@ CREATE PROCEDURE Account_Update
     @LastModifiedBy NVARCHAR(32)
 AS
 BEGIN
-    SET NOCOUNT ON;
-
     UPDATE Account
     SET EmployeeId = @EmployeeId,
         Username = @Username,
@@ -345,3 +317,197 @@ BEGIN
     WHERE Id = @Id AND IsDeleted = 0;
 END
 GO
+
+-- Tạo mới Customer
+CREATE PROCEDURE Customer_Create
+    @Name NVARCHAR(255),
+    @CustomerType NVARCHAR(50),
+    @PhoneNumber VARCHAR(15),
+    @Email VARCHAR (255),
+    @Address NVARCHAR(255),
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    INSERT INTO Customer
+    (
+        Name, CustomerType, PhoneNumber, Email, Address,CreatedBy
+    )
+    VALUES
+    (
+        @Name, @CustomerType, @PhoneNumber, @Email, @Address, @CreatedBy
+    )
+END
+GO
+
+--Lấy Name của Customer qua Id
+CREATE PROCEDURE Customer_GetName
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT Name
+    FROM Customer
+    WHERE Id = @Id
+        AND IsDeleted = 0;
+END
+GO
+
+-- Đọc Customer
+CREATE PROCEDURE Customer_Read
+    @Id INT = NULL,
+    @Name NVARCHAR(255) = NULL,
+    @CustomerType NVARCHAR(50) = NULL,
+    @PhoneNumber VARCHAR(15) = NULL,
+    @Email VARCHAR(255) = NULL,
+    @Address NVARCHAR(255) = NULL,
+    @DebtFrom INT = NULL,
+    @DebtTo INT = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL 
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+	        Id,
+	        Name,
+	        CustomerType,
+	        PhoneNumber,
+	        Email,
+	        Address,
+	        Debt,
+	        CreatedBy,
+	        CreatedDate,
+	        LastModifiedBy,
+	        LastModifiedDate,
+	        IsDeleted
+	    FROM Customer
+	    WHERE IsDeleted = 0';
+    
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @Name NVARCHAR(255),
+        @CustomerType NVARCHAR(50),
+        @PhoneNumber VARCHAR(15),
+        @Email VARCHAR(255),
+        @Address NVARCHAR(255),
+        @DebtFrom INT,
+        @DebtTo INT,
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart);
+    DECLARE @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd);
+    DECLARE @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart);
+    DECLARE @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+  
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @Name IS NOT NULL AND LEN(@Name) > 0
+        SET @Query += N' AND Name LIKE N''%'' + @Name + N''%''';
+    IF @CustomerType IS NOT NULL AND LEN(@CustomerType) > 0
+        SET @Query += N' AND CustomerType LIKE N''%'' + @CustomerType + N''%''';
+    IF @PhoneNumber IS NOT NULL AND LEN(@PhoneNumber) > 0
+        SET @Query += N' AND PhoneNumber LIKE N''%'' + @PhoneNumber + N''%''';
+    IF @Email IS NOT NULL AND LEN(@Email) > 0
+        SET @Query += N' AND Email LIKE N''%'' + @Email + N''%''';
+    IF @Address IS NOT NULL AND LEN(@Address) > 0
+        SET @Query += N' AND Address LIKE N''%'' + @Address + N''%''';
+    IF @DebtFrom IS NOT NULL
+        SET @Query += N' AND Debt >= @DebtFrom';
+    IF @DebtTo IS NOT NULL 
+        SET @Query += N' AND Debt <= @DebtTo';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+    
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @Name = @Name,
+        @CustomerType = @CustomerType,
+        @PhoneNumber = @PhoneNumber,
+        @Email = @Email,
+        @Address = @Address,
+        @DebtFrom = @DebtFrom,
+        @DebtTo = @DebtTo,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+--Update Customer
+CREATE PROCEDURE Customer_Update
+    @Id INT,
+    @Name NVARCHAR(255),
+    @CustomerType NVARCHAR(50),
+    @PhoneNumber VARCHAR(15),
+    @Email VARCHAR (255),
+    @Address NVARCHAR(255),
+    @Debt INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    UPDATE Customer
+    SET
+        Name = @Name,
+        CustomerType = @CustomerType,
+        PhoneNumber = @PhoneNumber,
+        Email = @Email,
+        Address = @Address,
+        Debt = @Debt,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0
+END
+GO
+
+--Xóa mềm Customer
+CREATE PROCEDURE Customer_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    UPDATE Customer
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0
+END
+GO
+

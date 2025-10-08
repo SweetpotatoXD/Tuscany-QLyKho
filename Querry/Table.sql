@@ -1,12 +1,21 @@
+USE master;
+GO
+
+DROP DATABASE IF EXISTS QLyKho;
+GO
 
 CREATE DATABASE QLyKho
+GO
+
+USE QLyKho;
+GO
 
 CREATE TABLE Employee(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
 	Name NVARCHAR(64),
 	Role NVARCHAR(32),
-	PhoneNumber NVARCHAR(15),
-	Email NVARCHAR(64) UNIQUE,
+	PhoneNumber VARCHAR(15),
+	Email VARCHAR(64) UNIQUE,
 	Address NVARCHAR(256),
 
 	CreatedBy NVARCHAR(32),
@@ -21,7 +30,7 @@ CREATE TABLE Account(
     Id INT IDENTITY(1,1) PRIMARY KEY,
     EmployeeId INT FOREIGN KEY REFERENCES Employee(Id),
     Username NVARCHAR(32) UNIQUE,
-    PasswordHash NVARCHAR(256), -- Store hashed passwords
+    PasswordHash VARCHAR(256), -- Store hashed passwords
     IsAdmin BIT NOT NULL DEFAULT 0, -- Flag to indicate admin privileges
 
     CreatedBy NVARCHAR(32),
@@ -34,9 +43,8 @@ GO
 
 CREATE TABLE Customer(
     Id INT IDENTITY(1,1) PRIMARY KEY,
-	PhoneNumber NVARCHAR(15),
     Name NVARCHAR(255) NOT NULL,               
-    CustomerType NVARCHAR(50) CHECK (CustomerType IN ('Cá nhân','Doanh nghiệp')), -- Loại KH
+    CustomerType NVARCHAR(50) CHECK (CustomerType IN (N'Cá nhân',N'Doanh nghiệp')), -- Loại KH
     PhoneNumber VARCHAR(15) UNIQUE,
     Email VARCHAR(255) UNIQUE,
     Address NVARCHAR(255),
@@ -57,7 +65,6 @@ CREATE TABLE Supplier (
     PhoneNumber VARCHAR(10), 
     Address NVARCHAR(255),
     Description NVARCHAR(500),
-
 
     CreatedBy NVARCHAR(32),
     CreatedDate DATETIME DEFAULT GETDATE(),
@@ -129,8 +136,8 @@ CREATE TABLE OutboundReceipt(
     LastModifiedDate DATETIME,
     IsDeleted BIT DEFAULT 0,
 
-    CONSTRAINT Fk_OutboundReceipt_Employee FOREIGN KEY EmployeeId REFERENCES Employee(Id),
-    CONSTRAINT Fk_OutboundReceipt_Customer FOREIGN KEY CustomerId REFERENCES Customer(Id)
+    CONSTRAINT Fk_OutboundReceipt_Employee FOREIGN KEY (EmployeeId) REFERENCES Employee(Id),
+    CONSTRAINT Fk_OutboundReceipt_Customer FOREIGN KEY (CustomerId) REFERENCES Customer(Id)
 );
 GO
 
@@ -141,13 +148,11 @@ CREATE TABLE OutboundDetail(
     Quantity INT NOT NULL CHECK (Quantity > 0),
     UnitPrice INT NOT NULL CHECK (UnitPrice > 0),
     
-
     CreatedBy NVARCHAR(32),
     CreatedDate DATETIME DEFAULT GETDATE(),
     LastModifiedBy NVARCHAR(32),
     LastModifiedDate DATETIME,
-
-    
+        
     CONSTRAINT Fk_OutboundDetail_OutboundReceipt FOREIGN KEY (OutboundReceiptId) REFERENCES OutboundReceipt(Id),
     CONSTRAINT Fk_OutboundDetail_Product FOREIGN KEY (ProductId) REFERENCES Product(Id)
 );
