@@ -1,4 +1,7 @@
-﻿-- Lấy Name của Employee theo Id
+﻿USE QLyKho;
+GO
+
+-- Lấy Name của Employee theo Id
 CREATE PROCEDURE Employee_GetName
     @Id INT
 AS
@@ -43,6 +46,7 @@ CREATE PROCEDURE Employee_Read
     @Role NVARCHAR(32) = NULL,
     @PhoneNumber NVARCHAR(15) = NULL,
     @Email NVARCHAR(64) = NULL,
+    @Address NVARCHAR(255) = NULL,
     @CreatedBy NVARCHAR(32) = NULL,
     @CreatedDateStart DATETIME = NULL,
     @CreatedDateEnd DATETIME = NULL,
@@ -65,6 +69,7 @@ BEGIN
         @Role NVARCHAR(32),
         @PhoneNumber NVARCHAR(15),
         @Email NVARCHAR(64),
+        @Address NVARCHAR(255),
         @CreatedBy NVARCHAR(32),
         @CreatedDateStart DATETIME,
         @CreatedDateEnd DATETIME,
@@ -91,6 +96,8 @@ BEGIN
         SET @Query += ' AND PhoneNumber LIKE N''%'' + @PhoneNumber + N''%''';
     IF @Email IS NOT NULL AND LEN(@Email) > 0
         SET @Query += ' AND Email LIKE N''%'' + @Email + N''%''';
+    IF @Address IS NOT NULL AND LEN(@Address) > 0
+            SET @Query += N' AND Address LIKE N''%'' + @Address + N''%''';
     IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
         SET @Query += ' AND CreatedBy = @CreatedBy';
     IF @CreatedDateStart IS NOT NULL
@@ -112,6 +119,7 @@ BEGIN
         @Role = @Role,
         @PhoneNumber = @PhoneNumber,
         @Email = @Email,
+        @Address = @Address,
         @CreatedBy = @CreatedBy,
         @CreatedDateStart = @CreatedDateStart,
         @CreatedDateEnd = @CreatedDateEnd,
@@ -328,6 +336,8 @@ CREATE PROCEDURE Customer_Create
     @CreatedBy NVARCHAR(32)
 AS
 BEGIN
+    SET NOCOUNT ON;
+
     INSERT INTO Customer
     (
         Name, CustomerType, PhoneNumber, Email, Address,CreatedBy
@@ -511,3 +521,1054 @@ BEGIN
 END
 GO
 
+-- Tạo mới Supplier
+CREATE PROCEDURE Supplier_Create
+    @Name NVARCHAR(255),
+    @Email VARCHAR(255) = NULL,
+    @PhoneNumber VARCHAR(10) = NULL,
+    @Address NVARCHAR(255) = NULL,
+    @Description NVARCHAR(500) = NULL,
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Supplier
+    (
+        Name, Email, PhoneNumber, Address, Description, CreatedBy
+    )
+    VALUES
+    (
+        @Name, @Email, @PhoneNumber, @Address, @Description, @CreatedBy
+    );
+END
+GO
+
+-- Đọc Supplier
+CREATE PROCEDURE Supplier_Read
+    @Id INT = NULL,
+    @Name NVARCHAR(255) = NULL,
+    @Email VARCHAR(255) = NULL,
+    @PhoneNumber VARCHAR(10) = NULL,
+    @Address NVARCHAR(255) = NULL,
+    @Description NVARCHAR(500) = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            Name,
+            Email,
+            PhoneNumber,
+            Address,
+            Description,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM Supplier
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @Name NVARCHAR(255),
+        @Email VARCHAR(255),
+        @PhoneNumber VARCHAR(10),
+        @Address NVARCHAR(255),
+        @Description NVARCHAR(500),
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE 
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @Name IS NOT NULL AND LEN(@Name) > 0
+        SET @Query += N' AND Name LIKE N''%'' + @Name + N''%''';
+    IF @Email IS NOT NULL AND LEN(@Email) > 0
+        SET @Query += N' AND Email LIKE N''%'' + @Email + N''%''';
+    IF @PhoneNumber IS NOT NULL AND LEN(@PhoneNumber) > 0
+        SET @Query += N' AND PhoneNumber LIKE N''%'' + @PhoneNumber + N''%''';
+    IF @Address IS NOT NULL AND LEN(@Address) > 0
+        SET @Query += N' AND Address LIKE N''%'' + @Address + N''%''';
+    IF @Description IS NOT NULL AND LEN(@Description) > 0
+        SET @Query += N' AND Description LIKE N''%'' + @Description + N''%''';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @Name = @Name,
+        @Email = @Email,
+        @PhoneNumber = @PhoneNumber,
+        @Address = @Address,
+        @Description = @Description,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+-- Cập nhật Supplier
+CREATE PROCEDURE Supplier_Update
+    @Id INT,
+    @Name NVARCHAR(255),
+    @Email VARCHAR(255),
+    @PhoneNumber VARCHAR(10),
+    @Address NVARCHAR(255),
+    @Description NVARCHAR(500),
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Supplier
+    SET
+        Name = @Name,
+        Email = @Email,
+        PhoneNumber = @PhoneNumber,
+        Address = @Address,
+        Description = @Description,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Xóa mềm Supplier
+CREATE PROCEDURE Supplier_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Supplier
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Tạo mới Product
+CREATE PROCEDURE Product_Create
+    @SupplierId INT,
+    @Name NVARCHAR(255),
+    @Quantity INT = 0,
+    @Unit NVARCHAR(20),
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO Product
+    (
+        SupplierId, Name, Quantity, Unit, CreatedBy
+    )
+    VALUES
+    (
+        @SupplierId, @Name, @Quantity, @Unit, @CreatedBy
+    );
+END
+GO
+
+-- Lấy Name của Product qua Id
+CREATE PROCEDURE Product_GetName
+    @Id INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT Name
+    FROM Product
+    WHERE Id = @Id
+      AND IsDeleted = 0;
+END
+GO
+
+-- Đọc Product
+CREATE PROCEDURE Product_Read
+    @Id INT = NULL,
+    @SupplierId INT = NULL,
+    @Name NVARCHAR(255) = NULL,
+    @Unit NVARCHAR(20) = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            SupplierId,
+            Name,
+            Quantity,
+            Unit,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM Product
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @SupplierId INT,
+        @Name NVARCHAR(255),
+        @Unit NVARCHAR(20),
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE 
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @SupplierId IS NOT NULL AND @SupplierId > 0
+        SET @Query += N' AND SupplierId = @SupplierId';
+    IF @Name IS NOT NULL AND LEN(@Name) > 0
+        SET @Query += N' AND Name LIKE N''%'' + @Name + N''%''';
+    IF @Unit IS NOT NULL AND LEN(@Unit) > 0
+        SET @Query += N' AND Unit LIKE N''%'' + @Unit + N''%''';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @SupplierId = @SupplierId,
+        @Name = @Name,
+        @Unit = @Unit,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+-- Update Product
+CREATE PROCEDURE Product_Update
+    @Id INT,
+    @SupplierId INT,
+    @Name NVARCHAR(255),
+    @Quantity INT,
+    @Unit NVARCHAR(20),
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Product
+    SET
+        SupplierId = @SupplierId,
+        Name = @Name,
+        Quantity = @Quantity,
+        Unit = @Unit,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Xóa mềm Product
+CREATE PROCEDURE Product_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE Product
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Tạo mới InboundReceipt
+CREATE PROCEDURE InboundReceipt_Create
+    @ReceiptDate DATETIME,
+    @EmployeeId INT,
+    @SupplierId INT,
+    @Note NVARCHAR(255),
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO InboundReceipt
+    (
+        ReceiptDate, EmployeeId, SupplierId, Note, CreatedBy
+    )
+    VALUES
+    (
+        @ReceiptDate, @EmployeeId, @SupplierId, @Note, @CreatedBy
+    );
+END
+GO
+
+-- Đọc InboundReceipt (READ động)
+CREATE PROCEDURE InboundReceipt_Read
+    @Id INT = NULL,
+    @ReceiptDateStart DATETIME = NULL,
+    @ReceiptDateEnd DATETIME = NULL,
+    @EmployeeId INT = NULL,
+    @SupplierId INT = NULL,
+    @Note NVARCHAR(255) = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            ReceiptDate,
+            EmployeeId,
+            SupplierId,
+            Note,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM InboundReceipt
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @ReceiptDateStart DATETIME,
+        @ReceiptDateEnd DATETIME,
+        @EmployeeId INT,
+        @SupplierId INT,
+        @Note NVARCHAR(255),
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @ReceiptDateStartCalculated DATETIME,
+        @ReceiptDateEndCalculated DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE
+        @ReceiptDateStartCalculated DATETIME = DATEADD(SECOND, -1, @ReceiptDateStart),
+        @ReceiptDateEndCalculated DATETIME = DATEADD(SECOND, 1, @ReceiptDateEnd),
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @ReceiptDateStart IS NOT NULL
+        SET @Query += N' AND ReceiptDate > @ReceiptDateStartCalculated';
+    IF @ReceiptDateEnd IS NOT NULL
+        SET @Query += N' AND ReceiptDate < @ReceiptDateEndCalculated';
+    IF @EmployeeId IS NOT NULL AND @EmployeeId > 0
+        SET @Query += N' AND EmployeeId = @EmployeeId';
+    IF @SupplierId IS NOT NULL AND @SupplierId > 0
+        SET @Query += N' AND SupplierId = @SupplierId';
+    IF @Note IS NOT NULL AND LEN(@Note) > 0
+        SET @Query += N' AND Note LIKE N''%'' + @Note + N''%''';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @ReceiptDateStart = @ReceiptDateStart,
+        @ReceiptDateEnd = @ReceiptDateEnd,
+        @EmployeeId = @EmployeeId,
+        @SupplierId = @SupplierId,
+        @Note = @Note,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @ReceiptDateStartCalculated = @ReceiptDateStartCalculated,
+        @ReceiptDateEndCalculated = @ReceiptDateEndCalculated,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+
+-- Cập nhật InboundReceipt
+CREATE PROCEDURE InboundReceipt_Update
+    @Id INT,
+    @ReceiptDate DATETIME,
+    @EmployeeId INT,
+    @SupplierId INT,
+    @Note NVARCHAR(255),
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE InboundReceipt
+    SET
+        ReceiptDate = @ReceiptDate,
+        EmployeeId = @EmployeeId,
+        SupplierId = @SupplierId,
+        Note = @Note,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+
+-- Xóa mềm InboundReceipt
+CREATE PROCEDURE InboundReceipt_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE InboundReceipt
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Tạo mới InboundDetail
+CREATE PROCEDURE InboundDetail_Create
+    @InboundReceiptId INT,
+    @ProductId INT,
+    @Quantity INT,
+    @UnitPrice INT,
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO InboundDetail
+    (
+        InboundReceiptId, ProductId, Quantity, UnitPrice, CreatedBy
+    )
+    VALUES
+    (
+        @InboundReceiptId, @ProductId, @Quantity, @UnitPrice, @CreatedBy
+    );
+END
+GO
+
+-- Đọc InboundDetail
+CREATE PROCEDURE InboundDetail_Read
+    @Id INT = NULL,
+    @InboundReceiptId INT = NULL,
+    @ProductId INT = NULL,
+    @QuantityFrom INT = NULL,
+    @QuantityTo INT = NULL,
+    @UnitPriceFrom INT = NULL,
+    @UnitPriceTo INT = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            InboundReceiptId,
+            ProductId,
+            Quantity,
+            UnitPrice,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM InboundDetail
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @InboundReceiptId INT,
+        @ProductId INT,
+        @QuantityFrom INT,
+        @QuantityTo INT,
+        @UnitPriceFrom INT,
+        @UnitPriceTo INT,
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE 
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @InboundReceiptId IS NOT NULL AND @InboundReceiptId > 0
+        SET @Query += N' AND InboundReceiptId = @InboundReceiptId';
+    IF @ProductId IS NOT NULL AND @ProductId > 0
+        SET @Query += N' AND ProductId = @ProductId';
+    IF @QuantityFrom IS NOT NULL
+        SET @Query += N' AND Quantity >= @QuantityFrom';
+    IF @QuantityTo IS NOT NULL
+        SET @Query += N' AND Quantity <= @QuantityTo';
+    IF @UnitPriceFrom IS NOT NULL
+        SET @Query += N' AND UnitPrice >= @UnitPriceFrom';
+    IF @UnitPriceTo IS NOT NULL
+        SET @Query += N' AND UnitPrice <= @UnitPriceTo';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @InboundReceiptId = @InboundReceiptId,
+        @ProductId = @ProductId,
+        @QuantityFrom = @QuantityFrom,
+        @QuantityTo = @QuantityTo,
+        @UnitPriceFrom = @UnitPriceFrom,
+        @UnitPriceTo = @UnitPriceTo,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+-- Cập nhật InboundDetail
+CREATE PROCEDURE InboundDetail_Update
+    @Id INT,
+    @InboundReceiptId INT,
+    @ProductId INT,
+    @Quantity INT,
+    @UnitPrice INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE InboundDetail
+    SET
+        InboundReceiptId = @InboundReceiptId,
+        ProductId = @ProductId,
+        Quantity = @Quantity,
+        UnitPrice = @UnitPrice,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Xóa mềm InboundDetail
+CREATE PROCEDURE InboundDetail_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE InboundDetail
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Tạo mới OutboundReceipt
+CREATE PROCEDURE OutboundReceipt_Create
+    @ReceiptDate DATETIME,
+    @EmployeeId INT,
+    @CustomerId INT,
+    @Note NVARCHAR(255) = NULL,
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO OutboundReceipt
+    (
+        ReceiptDate, EmployeeId, CustomerId, Note, CreatedBy
+    )
+    VALUES
+    (
+        @ReceiptDate, @EmployeeId, @CustomerId, @Note, @CreatedBy
+    );
+END
+GO
+
+-- Đọc OutboundReceipt
+CREATE PROCEDURE OutboundReceipt_Read
+    @Id INT = NULL,
+    @ReceiptDateStart DATETIME = NULL,
+    @ReceiptDateEnd DATETIME = NULL,
+    @EmployeeId INT = NULL,
+    @CustomerId INT = NULL,
+    @Note NVARCHAR(255) = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            ReceiptDate,
+            EmployeeId,
+            CustomerId,
+            Note,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM OutboundReceipt
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @ReceiptDateStart DATETIME,
+        @ReceiptDateEnd DATETIME,
+        @EmployeeId INT,
+        @CustomerId INT,
+        @Note NVARCHAR(255),
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @ReceiptDateStartCalculated DATETIME,
+        @ReceiptDateEndCalculated DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE 
+        @ReceiptDateStartCalculated DATETIME = DATEADD(SECOND, -1, @ReceiptDateStart),
+        @ReceiptDateEndCalculated DATETIME = DATEADD(SECOND, 1, @ReceiptDateEnd),
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @ReceiptDateStart IS NOT NULL
+        SET @Query += N' AND ReceiptDate > @ReceiptDateStartCalculated';
+    IF @ReceiptDateEnd IS NOT NULL
+        SET @Query += N' AND ReceiptDate < @ReceiptDateEndCalculated';
+    IF @EmployeeId IS NOT NULL AND @EmployeeId > 0
+        SET @Query += N' AND EmployeeId = @EmployeeId';
+    IF @CustomerId IS NOT NULL AND @CustomerId > 0
+        SET @Query += N' AND CustomerId = @CustomerId';
+    IF @Note IS NOT NULL AND LEN(@Note) > 0
+        SET @Query += N' AND Note LIKE N''%'' + @Note + N''%''';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @ReceiptDateStart = @ReceiptDateStart,
+        @ReceiptDateEnd = @ReceiptDateEnd,
+        @EmployeeId = @EmployeeId,
+        @CustomerId = @CustomerId,
+        @Note = @Note,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @ReceiptDateStartCalculated = @ReceiptDateStartCalculated,
+        @ReceiptDateEndCalculated = @ReceiptDateEndCalculated,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+-- Cập nhật OutboundReceipt
+CREATE PROCEDURE OutboundReceipt_Update
+    @Id INT,
+    @ReceiptDate DATETIME,
+    @EmployeeId INT,
+    @CustomerId INT,
+    @Note NVARCHAR(255),
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE OutboundReceipt
+    SET
+        ReceiptDate = @ReceiptDate,
+        EmployeeId = @EmployeeId,
+        CustomerId = @CustomerId,
+        Note = @Note,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Xóa mềm OutboundReceipt
+CREATE PROCEDURE OutboundReceipt_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE OutboundReceipt
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Tạo mới OutboundDetail
+CREATE PROCEDURE OutboundDetail_Create
+    @OutboundReceiptId INT,
+    @ProductId INT,
+    @Quantity INT,
+    @UnitPrice INT,
+    @CreatedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    INSERT INTO OutboundDetail
+    (
+        OutboundReceiptId, ProductId, Quantity, UnitPrice, CreatedBy
+    )
+    VALUES
+    (
+        @OutboundReceiptId, @ProductId, @Quantity, @UnitPrice, @CreatedBy
+    );
+END
+GO
+
+-- Đọc OutboundDetail
+CREATE PROCEDURE OutboundDetail_Read
+    @Id INT = NULL,
+    @OutboundReceiptId INT = NULL,
+    @ProductId INT = NULL,
+    @QuantityFrom INT = NULL,
+    @QuantityTo INT = NULL,
+    @UnitPriceFrom INT = NULL,
+    @UnitPriceTo INT = NULL,
+    @CreatedBy NVARCHAR(32) = NULL,
+    @CreatedDateStart DATETIME = NULL,
+    @CreatedDateEnd DATETIME = NULL,
+    @LastModifiedBy NVARCHAR(32) = NULL,
+    @LastModifiedDateStart DATETIME = NULL,
+    @LastModifiedDateEnd DATETIME = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @Query NVARCHAR(MAX) = N'
+        SELECT
+            Id,
+            OutboundReceiptId,
+            ProductId,
+            Quantity,
+            UnitPrice,
+            CreatedBy,
+            CreatedDate,
+            LastModifiedBy,
+            LastModifiedDate,
+            IsDeleted
+        FROM OutboundDetail
+        WHERE IsDeleted = 0';
+
+    DECLARE @Var NVARCHAR(MAX) = N'
+        @Id INT,
+        @OutboundReceiptId INT,
+        @ProductId INT,
+        @QuantityFrom INT,
+        @QuantityTo INT,
+        @UnitPriceFrom INT,
+        @UnitPriceTo INT,
+        @CreatedBy NVARCHAR(32),
+        @CreatedDateStart DATETIME,
+        @CreatedDateEnd DATETIME,
+        @LastModifiedBy NVARCHAR(32),
+        @LastModifiedDateStart DATETIME,
+        @LastModifiedDateEnd DATETIME,
+        @CreatedDateStartCalculated DATETIME,
+        @CreatedDateEndCalculated DATETIME,
+        @LastModifiedDateStartCalculated DATETIME,
+        @LastModifiedDateEndCalculated DATETIME';
+
+    DECLARE 
+        @CreatedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @CreatedDateStart),
+        @CreatedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @CreatedDateEnd),
+        @LastModifiedDateStartCalculated DATETIME = DATEADD(SECOND, -1, @LastModifiedDateStart),
+        @LastModifiedDateEndCalculated DATETIME = DATEADD(SECOND, 1, @LastModifiedDateEnd);
+
+    -- Điều kiện động
+    IF @Id IS NOT NULL AND @Id > 0
+        SET @Query += N' AND Id = @Id';
+    IF @OutboundReceiptId IS NOT NULL AND @OutboundReceiptId > 0
+        SET @Query += N' AND OutboundReceiptId = @OutboundReceiptId';
+    IF @ProductId IS NOT NULL AND @ProductId > 0
+        SET @Query += N' AND ProductId = @ProductId';
+    IF @QuantityFrom IS NOT NULL
+        SET @Query += N' AND Quantity >= @QuantityFrom';
+    IF @QuantityTo IS NOT NULL
+        SET @Query += N' AND Quantity <= @QuantityTo';
+    IF @UnitPriceFrom IS NOT NULL
+        SET @Query += N' AND UnitPrice >= @UnitPriceFrom';
+    IF @UnitPriceTo IS NOT NULL
+        SET @Query += N' AND UnitPrice <= @UnitPriceTo';
+    IF @CreatedBy IS NOT NULL AND LEN(@CreatedBy) > 0
+        SET @Query += N' AND CreatedBy = @CreatedBy';
+    IF @CreatedDateStart IS NOT NULL
+        SET @Query += N' AND CreatedDate > @CreatedDateStartCalculated';
+    IF @CreatedDateEnd IS NOT NULL
+        SET @Query += N' AND CreatedDate < @CreatedDateEndCalculated';
+    IF @LastModifiedBy IS NOT NULL AND LEN(@LastModifiedBy) > 0
+        SET @Query += N' AND LastModifiedBy = @LastModifiedBy';
+    IF @LastModifiedDateStart IS NOT NULL
+        SET @Query += N' AND LastModifiedDate > @LastModifiedDateStartCalculated';
+    IF @LastModifiedDateEnd IS NOT NULL
+        SET @Query += N' AND LastModifiedDate < @LastModifiedDateEndCalculated';
+
+    EXEC sp_executesql
+        @Query,
+        @Var,
+        @Id = @Id,
+        @OutboundReceiptId = @OutboundReceiptId,
+        @ProductId = @ProductId,
+        @QuantityFrom = @QuantityFrom,
+        @QuantityTo = @QuantityTo,
+        @UnitPriceFrom = @UnitPriceFrom,
+        @UnitPriceTo = @UnitPriceTo,
+        @CreatedBy = @CreatedBy,
+        @CreatedDateStart = @CreatedDateStart,
+        @CreatedDateEnd = @CreatedDateEnd,
+        @LastModifiedBy = @LastModifiedBy,
+        @LastModifiedDateStart = @LastModifiedDateStart,
+        @LastModifiedDateEnd = @LastModifiedDateEnd,
+        @CreatedDateStartCalculated = @CreatedDateStartCalculated,
+        @CreatedDateEndCalculated = @CreatedDateEndCalculated,
+        @LastModifiedDateStartCalculated = @LastModifiedDateStartCalculated,
+        @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
+END
+GO
+
+-- Cập nhật OutboundDetail
+CREATE PROCEDURE OutboundDetail_Update
+    @Id INT,
+    @OutboundReceiptId INT,
+    @ProductId INT,
+    @Quantity INT,
+    @UnitPrice INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE OutboundDetail
+    SET
+        OutboundReceiptId = @OutboundReceiptId,
+        ProductId = @ProductId,
+        Quantity = @Quantity,
+        UnitPrice = @UnitPrice,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO
+
+-- Xóa mềm OutboundDetail
+CREATE PROCEDURE OutboundDetail_SoftDelete
+    @Id INT,
+    @LastModifiedBy NVARCHAR(32)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE OutboundDetail
+    SET
+        IsDeleted = 1,
+        LastModifiedBy = @LastModifiedBy,
+        LastModifiedDate = GETDATE()
+    WHERE
+        Id = @Id AND IsDeleted = 0;
+END
+GO

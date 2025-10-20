@@ -14,7 +14,7 @@ CREATE TABLE Employee(
 	Id INT IDENTITY(1,1) PRIMARY KEY,
 	Name NVARCHAR(64),
 	Role NVARCHAR(32),
-	PhoneNumber VARCHAR(15),
+	PhoneNumber VARCHAR(15) UNIQUE,
 	Email VARCHAR(64) UNIQUE,
 	Address NVARCHAR(256),
 
@@ -61,8 +61,8 @@ GO
 CREATE TABLE Supplier (
     Id INT IDENTITY(1,1) PRIMARY KEY,
     Name NVARCHAR(255) NOT NULL, 
-    Email VARCHAR(255),
-    PhoneNumber VARCHAR(10), 
+    Email VARCHAR(255) UNIQUE,
+    PhoneNumber VARCHAR(10)UNIQUE, 
     Address NVARCHAR(255),
     Description NVARCHAR(500),
 
@@ -76,6 +76,7 @@ GO
 
 CREATE TABLE Product(
     Id INT IDENTITY(1,1) PRIMARY KEY,
+    SupplierId INT ,
     Name NVARCHAR(255),
     Quantity INT DEFAULT 0 CHECK (Quantity >= 0),
     Unit NVARCHAR(20),    
@@ -84,7 +85,9 @@ CREATE TABLE Product(
     CreatedDate DATETIME DEFAULT GETDATE(),
     LastModifiedBy NVARCHAR(32),
     LastModifiedDate DATETIME,
-    IsDeleted BIT DEFAULT 0
+    IsDeleted BIT DEFAULT 0,
+
+    CONSTRAINT Fk_Product_Supplier FOREIGN KEY (SupplierId) REFERENCES Supplier(Id)
 );
 GO
 
@@ -117,6 +120,7 @@ CREATE TABLE InboundDetail(
     CreatedDate DATETIME DEFAULT GETDATE(),
     LastModifiedBy NVARCHAR(32),
     LastModifiedDate DATETIME,
+    IsDeleted BIT DEFAULT 0,
 
     CONSTRAINT Fk_InboundDetail_InboundReceipt FOREIGN KEY (InboundReceiptId) REFERENCES InboundReceipt(Id),
     CONSTRAINT Fk_InboundDetail_Product FOREIGN KEY (ProductId) REFERENCES Product(Id)
@@ -152,6 +156,7 @@ CREATE TABLE OutboundDetail(
     CreatedDate DATETIME DEFAULT GETDATE(),
     LastModifiedBy NVARCHAR(32),
     LastModifiedDate DATETIME,
+    IsDeleted BIT DEFAULT 0,
         
     CONSTRAINT Fk_OutboundDetail_OutboundReceipt FOREIGN KEY (OutboundReceiptId) REFERENCES OutboundReceipt(Id),
     CONSTRAINT Fk_OutboundDetail_Product FOREIGN KEY (ProductId) REFERENCES Product(Id)
