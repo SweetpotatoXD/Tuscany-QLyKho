@@ -3,8 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\oldcontroller\\usercontroller.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\oldcontroller\\usercontroller.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\data\\gioithieuctycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\data\\gioithieuctycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\extension\\adminoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\extension\\adminoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\extension\\swaggerdropdownoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\extension\\swaggerdropdownoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|c:\\users\\sweetpotato\\documents\\github\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +46,123 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "GioiThieuCtyContext.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-26T08:27:01.649Z",
+              "WhenOpened": "2025-11-24T15:39:41.195Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuditLogController.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAACwAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:34:11.953Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.Development.json",
+              "RelativeToolTip": "QuanLyKhoAPI\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-24T18:01:57.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserController.txt",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\OldController\\UserController.txt",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\OldController\\UserController.txt",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\OldController\\UserController.txt",
+              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\OldController\\UserController.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2025-11-24T18:02:10.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AdminOperationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\AdminOperationFilter.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\extension\\AdminOperationFilter.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\AdminOperationFilter.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\extension\\AdminOperationFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T14:40:59.693Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Admin.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\DB\\Admin.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\DB\\Admin.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T14:41:01.968Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.json",
+              "RelativeToolTip": "QuanLyKhoAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-20T09:27:45.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SwaggerDropdownOperationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T16:53:40.131Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ResultT.cs",
+              "DocumentMoniker": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
+              "ToolTip": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
+              "RelativeToolTip": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-24T15:39:34.698Z",
               "EditorCaption": ""
             }
           ]

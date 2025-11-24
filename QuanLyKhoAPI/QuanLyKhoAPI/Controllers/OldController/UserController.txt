@@ -1,0 +1,158 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using GioiThieuCty.Data;
+using GioiThieuCty.Models.DB;
+using Microsoft.Data.SqlClient;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace GioiThieuCty.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class UserController : ControllerBase
+    {
+        private readonly GioiThieuCtyContext _context;
+
+        public UserController(GioiThieuCtyContext context)
+        {
+            _context = context;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<IEnumerable<User>>> CreateNewUser(string Username, string PasswordHash, bool IsAdmin, Int32 CreatedBy)
+
+        {
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(PasswordHash))
+            {
+                return BadRequest("Username and PasswordHash are required.");
+            }
+            string storedProc = "EXEC User_Create @Username,@PasswordHash,@IsAdmin,@CreatedBy";
+            var parameters = new[]
+            {
+                new SqlParameter("@Username", Username),
+                new SqlParameter("@PasswordHash", PasswordHash),
+                new SqlParameter("@IsAdmin", IsAdmin),
+                new SqlParameter("@CreatedBy", CreatedBy)
+            };
+
+            var result = await _context.output
+                .FromSqlRaw(storedProc, parameters)
+                .ToListAsync();
+
+            return Ok(result);
+        }
+        // GET: api/outputs
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<User>>> Getoutput()
+        {
+            
+
+
+            try
+            {
+                var result = await _context.output.FromSqlInterpolated($"EXEC User_Read_test").ToListAsync();
+            return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+                throw;
+            }
+            return NoContent();
+            
+        }
+
+        // GET: api/outputs/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> Getoutputbyid(string id)
+        {
+            string storedProc = "EXEC User_Read_test @Id";
+            var parameters = new[]
+            {
+                new SqlParameter("@Id", id)
+            };
+
+            var result = await _context.output.FromSqlRaw(storedProc, parameters).ToListAsync();
+            
+            return Ok(result);
+        }
+        
+        // PUT: api/outputs/5
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Putoutput(int id,
+            [FromQuery] string? username,
+            [FromQuery] string? passwordHash,
+            [FromQuery] bool? isAdmin,
+            [FromQuery] int lastModifiedBy)
+        {
+            try
+            {
+                string storedProc = @"
+                    EXEC User_Update
+                    @Id,
+                    @Username,
+                    @PasswordHash,
+                    @IsAdmin,
+                    @LastModifiedBy";
+
+                var parameters = new[]
+                {
+                    new SqlParameter("@Id", id),
+                    new SqlParameter("@Username", username),
+                    new SqlParameter("@PasswordHash", passwordHash),
+                    new SqlParameter("@IsAdmin", isAdmin),
+                    new SqlParameter("@LastModifiedBy", lastModifiedBy)
+                };
+
+                        await _context.Database.ExecuteSqlRawAsync(storedProc, parameters);
+
+                        return Ok(new { Message = "User updated successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Message = "An error occurred while updating the user.",
+                    Details = ex.Message
+                });
+            }
+        }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> SoftDeleteUser(int id, [FromQuery] int lastModifiedBy)
+        {
+            try
+            {
+                string storedProc = @"
+                    EXEC User_SoftDelete
+                    @Id,
+                    @LastModifiedBy";
+
+                var parameters = new[]
+                {
+            new SqlParameter("@Id", id),
+            new SqlParameter("@LastModifiedBy", lastModifiedBy)
+                };
+
+                await _context.Database.ExecuteSqlRawAsync(storedProc, parameters);
+
+                return Ok(new { Message = "User soft deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Message = "An error occurred while soft deleting the user.",
+                    Details = ex.Message
+                });
+            }
+        }
+    }
+}

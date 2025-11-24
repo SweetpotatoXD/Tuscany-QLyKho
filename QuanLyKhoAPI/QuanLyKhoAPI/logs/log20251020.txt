@@ -1,0 +1,5 @@
+[20/10/2025-17:20:39-+07:17:20.351] ["["GET"] -(Exception: "Procedure or function Employee_Read has too many arguments specified.") {Id: null}"]
+[20/10/2025-17:23:01-+07:17:23.131] ["["GET"] -(Exception: "Unable to cast object of type 'System.String' to type 'System.Int32'.") {Id: null}"]
+[20/10/2025-17:30:16-+07:17:30.584] ["["GET"] -(Exception: "Unable to cast object of type 'System.String' to type 'System.Int32'.") {Id: null}"]
+[20/10/2025-17:31:21-+07:17:31.956] ["["GET"] -(Exception: "Unable to cast object of type 'System.String' to type 'System.Int32'.") {Id: null}"]
+[20/10/2025-17:33:17-+07:17:33.590] ["["GET"] -(Exception: "Unable to cast object of type 'System.String' to type 'System.Int32'.") {Id: null}"]

@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\QuanLyKhoAPI",
+    "\\QuanLyKhoAPI\\QuanLyKhoAPI",
+    "\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers"
   ],
+  "SelectedNode": "\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\WeatherForecastController.cs",
   "PreviewInSolutionExplorer": false
 }
