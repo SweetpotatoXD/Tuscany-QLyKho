@@ -5081,23 +5081,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sweetpotato\\.nuget\\packages\\": {},
+    "C:\\Users\\Surface Pro 7 Plus\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\QuanLyKhoAPI.csproj",
+      "projectUniqueName": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\QuanLyKhoAPI.csproj",
       "projectName": "QuanLyKhoAPI",
-      "projectPath": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\QuanLyKhoAPI.csproj",
-      "packagesPath": "C:\\Users\\Sweetpotato\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sweetpotato\\Documents\\GitHub\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\obj\\",
+      "projectPath": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\QuanLyKhoAPI.csproj",
+      "packagesPath": "C:\\Users\\Surface Pro 7 Plus\\.nuget\\packages\\",
+      "outputPath": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Sweetpotato\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Surface Pro 7 Plus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5176,8 +5176,16 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.306/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json."
+    }
+  ]
 }
