@@ -132,6 +132,23 @@ BEGIN
         @LastModifiedDateEndCalculated = @LastModifiedDateEndCalculated;
 END
 GO
+-- Get Validate Email PhoneNumber Employee
+CREATE OR ALTER PROCEDURE [dbo].[Employee_CheckDuplicate]
+    @PhoneNumber NVARCHAR(15) = NULL,
+    @Email NVARCHAR(64) = NULL
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT Id, Name, PhoneNumber, Email
+    FROM Employee
+    WHERE IsDeleted = 0
+    AND (
+        (@Email IS NOT NULL AND @Email <> '' AND Email = @Email)
+        OR
+        (@PhoneNumber IS NOT NULL AND @PhoneNumber <> '' AND PhoneNumber = @PhoneNumber)
+    )
+END
 
 -- Update Employee
 CREATE PROCEDURE Employee_Update
