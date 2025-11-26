@@ -30,18 +30,18 @@ namespace GioiThieuCty.Controllers
 
         [HttpPost]
         public async Task<ActionResult<ResultT<List<Employee>>>> CreateNewEmployee(
-            string? Name,
-            string? Role,
-            string? PhoneNumber,
-            string? Email,
-            string? Address,
-            string? CreatedBy)
-                {
+    string? Name,
+    string? Role,
+    string? PhoneNumber,
+    string? Email,
+    string? Address,
+    string? CreatedBy)
+        {
             string httpMethod = HttpContext.Request.Method;
 
             try
             {
-                // ======= VALIDATION ========
+                // ======= 1. VALIDATION CƠ BẢN ========
                 if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email))
                 {
                     _logger.LogError("[{HttpMethod}] (Validation failed) {{Name: {Name}, Email: {Email}}}",
@@ -56,25 +56,77 @@ namespace GioiThieuCty.Controllers
                     });
                 }
 
-                // ========= SQL PARAMETERS =========
-                var parameters = new[]
-                {
-            new SqlParameter("@Name", Name ?? (object)DBNull.Value),
-            new SqlParameter("@Role", Role ?? (object)DBNull.Value),
-            new SqlParameter("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value),
-            new SqlParameter("@Email", Email ?? (object)DBNull.Value),
-            new SqlParameter("@Address", Address ?? (object)DBNull.Value),
-            new SqlParameter("@CreatedBy", CreatedBy ?? (object)DBNull.Value)
-        };
-
                 string connectionString = _context.Database.GetDbConnection().ConnectionString;
                 var messages = new List<string>();
                 var employees = new List<Employee>();
 
-                // ========= EXECUTE 1 LẦN DUY NHẤT =========
                 using (var connection = new SqlConnection(connectionString))
                 {
                     await connection.OpenAsync();
+
+                    // ======= 2. CHECK TRÙNG LẶP EMAIL ========
+                    if (!string.IsNullOrWhiteSpace(Email))
+                    {
+                        using (var checkCmd = new SqlCommand("Employee_Read", connection))
+                        {
+                            checkCmd.CommandType = CommandType.StoredProcedure;
+                            // Chỉ truyền tham số Email để tìm kiếm
+                            checkCmd.Parameters.Add(new SqlParameter("@Email", Email));
+
+                            using (var reader = await checkCmd.ExecuteReaderAsync())
+                            {
+                                // Nếu đọc được dòng nào (HasRows = true) -> Email đã tồn tại (hoặc gần giống vì dùng LIKE)
+                                if (reader.HasRows)
+                                {
+                                    return BadRequest(new ResultT<List<Employee>>
+                                    {
+                                        IsSuccess = false,
+                                        ErrorMessage = $"Email '{Email}' trùng lặp.",
+                                        Count = 0,
+                                        Data = null
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    // ======= 3. CHECK TRÙNG LẶP SỐ ĐIỆN THOẠI ========
+                    if (!string.IsNullOrWhiteSpace(PhoneNumber))
+                    {
+                        using (var checkCmd = new SqlCommand("Employee_Read", connection))
+                        {
+                            checkCmd.CommandType = CommandType.StoredProcedure;
+                            // Chỉ truyền tham số PhoneNumber để tìm kiếm
+                            checkCmd.Parameters.Add(new SqlParameter("@PhoneNumber", PhoneNumber));
+
+                            using (var reader = await checkCmd.ExecuteReaderAsync())
+                            {
+                                if (reader.HasRows)
+                                {
+                                    return BadRequest(new ResultT<List<Employee>>
+                                    {
+                                        IsSuccess = false,
+                                        ErrorMessage = $"Số điện thoại: '{PhoneNumber}' trùng lặp.",
+                                        Count = 0,
+                                        Data = null
+                                    });
+                                }
+                            }
+                        }
+                    }
+
+                    // ======= 4. NẾU KHÔNG TRÙNG -> THỰC HIỆN TẠO MỚI (CREATE) ========
+
+                    // Chuẩn bị tham số cho Create
+                    var parameters = new[]
+                    {
+                new SqlParameter("@Name", Name ?? (object)DBNull.Value),
+                new SqlParameter("@Role", Role ?? (object)DBNull.Value),
+                new SqlParameter("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value),
+                new SqlParameter("@Email", Email ?? (object)DBNull.Value),
+                new SqlParameter("@Address", Address ?? (object)DBNull.Value),
+                new SqlParameter("@CreatedBy", CreatedBy ?? (object)DBNull.Value)
+            };
 
                     using (var command = new SqlCommand("Employee_Create", connection))
                     {
@@ -308,7 +360,7 @@ namespace GioiThieuCty.Controllers
                 }
 
                 var result = await _context.Employee.FromSqlRaw(
-                    $"EXEC Employee_Read @Id",
+                    $"EXEC Employee_Read @Id, @Name, @Role, @PhoneNumber, @Email, @Address, @CreatedBy, @CreatedDateStart, @CreatedDateEnd, @LastModifiedBy, @LastModifiedDateStart, @LastModifiedDateEnd",
                     parameters).ToListAsync();
 
                 // Log SQL messages
