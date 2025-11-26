@@ -1,12 +1,46 @@
-﻿body {
-    padding-bottom: 100px;
-    background-color: #f9fafb;
+﻿.ui.form .fields {
+    margin-bottom: 30px;
 }
 
-#filterArea {
-    margin-bottom: 20px;
+.ui.form .field {
+    position: relative;
+    margin-bottom: 5px;
 }
 
-.ui.segment, .ui.table {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    .ui.form .field.error input,
+    .ui.form .field.error input:focus {
+        background-color: #fff6f6 !important;
+        border-color: #db2828 !important;
+        color: #db2828 !important;
+        padding: 0.67857143em 1em !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+.validation-msg {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    color: #db2828 !important;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    padding-left: 6px;
 }
+
+#globalError {
+    background-color: #fff6f6 !important;
+    border: 1px solid #db2828 !important;
+    color: #db2828 !important;
+    box-shadow: none !important;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+    #globalError p {
+        color: #db2828 !important;
+    }

@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\js\\nhanvien.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\js\\nhanvien.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\css\\nhanvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\css\\nhanvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\employeecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\data\\gioithieuctycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,12 +39,12 @@
       "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\extension\\swaggerdropdownoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -67,6 +79,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "nhanvien.css",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-26T15:46:38.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Nhanvien.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-26T14:44:13.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "nhanvien.js",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\nhanvien.js",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\js\\nhanvien.js",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\nhanvien.js",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\js\\nhanvien.js",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-26T14:35:04.637Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ResultT.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
@@ -74,11 +125,12 @@
               "RelativeToolTip": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T13:18:12.927Z"
+              "WhenOpened": "2025-11-25T13:18:12.927Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Admin.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\DB\\Admin.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
@@ -86,23 +138,25 @@
               "RelativeToolTip": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
               "ViewState": "AgIAAFEAAAAAAAAAAAAAAGMAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T13:01:46.156Z"
+              "WhenOpened": "2025-11-25T13:01:46.156Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EmployeeController.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\EmployeeController.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\EmployeeController.cs",
               "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\EmployeeController.cs",
               "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\EmployeeController.cs",
-              "ViewState": "AgIAAPcBAAAAAAAAAAAAAPUBAABTAAAAAAAAAA==",
+              "ViewState": "AgIAAIwAAAAAAAAAAADwvzEBAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T20:32:42.674Z"
+              "WhenOpened": "2025-11-24T20:32:42.674Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 10,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.json",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\appsettings.json",
@@ -115,7 +169,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Program.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\Program.cs",
@@ -123,23 +177,25 @@
               "RelativeToolTip": "QuanLyKhoAPI\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T11:53:20.974Z"
+              "WhenOpened": "2025-11-25T11:53:20.974Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "AuditLogController.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
               "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
               "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
-              "ViewState": "AgIAAHgAAAAAAAAAAAApwG0AAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAApwG0AAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:34:11.953Z"
+              "WhenOpened": "2025-11-24T15:34:11.953Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "GioiThieuCtyContext.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
@@ -147,11 +203,12 @@
               "RelativeToolTip": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:39:41.195Z"
+              "WhenOpened": "2025-11-24T15:39:41.195Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "log20251125.txt",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\logs\\log20251125.txt",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\logs\\log20251125.txt",
@@ -159,11 +216,12 @@
               "RelativeToolTip": "QuanLyKhoAPI\\logs\\log20251125.txt",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-11-25T12:01:32.591Z"
+              "WhenOpened": "2025-11-25T12:01:32.591Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "SwaggerDropdownOperationFilter.cs",
               "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
               "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",

@@ -36,17 +36,14 @@ namespace GioiThieuCty.Controllers
             string? Email,
             string? Address,
             string? CreatedBy)
-                {
+        {
             string httpMethod = HttpContext.Request.Method;
 
             try
             {
-                // ======= VALIDATION ========
+                // ======= 1. VALIDATION ĐẦU VÀO CƠ BẢN ========
                 if (string.IsNullOrWhiteSpace(Name) || string.IsNullOrWhiteSpace(Email))
                 {
-                    _logger.LogError("[{HttpMethod}] (Validation failed) {{Name: {Name}, Email: {Email}}}",
-                        httpMethod, Name ?? "null", Email ?? "null");
-
                     return BadRequest(new ResultT<List<Employee>>
                     {
                         IsSuccess = false,
@@ -56,32 +53,77 @@ namespace GioiThieuCty.Controllers
                     });
                 }
 
-                // ========= SQL PARAMETERS =========
-                var parameters = new[]
-                {
-            new SqlParameter("@Name", Name ?? (object)DBNull.Value),
-            new SqlParameter("@Role", Role ?? (object)DBNull.Value),
-            new SqlParameter("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value),
-            new SqlParameter("@Email", Email ?? (object)DBNull.Value),
-            new SqlParameter("@Address", Address ?? (object)DBNull.Value),
-            new SqlParameter("@CreatedBy", CreatedBy ?? (object)DBNull.Value)
-        };
-
                 string connectionString = _context.Database.GetDbConnection().ConnectionString;
                 var messages = new List<string>();
                 var employees = new List<Employee>();
 
-                // ========= EXECUTE 1 LẦN DUY NHẤT =========
                 using (var connection = new SqlConnection(connectionString))
                 {
                     await connection.OpenAsync();
+
+                    // ======= 2. CHECK TRÙNG LẶP (EMAIL & SĐT) ========
+                    // Gọi Procedure mới tạo để kiểm tra chính xác
+                    using (var checkCmd = new SqlCommand("Employee_CheckDuplicate", connection))
+                    {
+                        checkCmd.CommandType = CommandType.StoredProcedure;
+                        checkCmd.Parameters.Add(new SqlParameter("@Email", Email ?? (object)DBNull.Value));
+                        checkCmd.Parameters.Add(new SqlParameter("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value));
+
+                        using (var reader = await checkCmd.ExecuteReaderAsync())
+                        {
+                            if (await reader.ReadAsync())
+                            {
+                                // Lấy dữ liệu từ DB để so sánh xem cái nào bị trùng
+                                string dbEmail = reader["Email"]?.ToString() ?? "";
+                                string dbPhone = reader["PhoneNumber"]?.ToString() ?? "";
+
+                                string errorMsg = "";
+
+                                // So sánh không phân biệt hoa thường
+                                if (!string.IsNullOrEmpty(Email) && dbEmail.Equals(Email, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    errorMsg = $"Email '{Email}' tồn tại.";
+                                }
+                                else if (!string.IsNullOrEmpty(PhoneNumber) && dbPhone.Equals(PhoneNumber, StringComparison.OrdinalIgnoreCase))
+                                {
+                                    errorMsg = $"PhoneNumber '{PhoneNumber}' tồn tại.";
+                                }
+                                else
+                                {
+                                    errorMsg = "Employee with this Email or Phone number already exists.";
+                                }
+
+                                _logger.LogWarning("[{HttpMethod}] (Duplicate) {Message}", httpMethod, errorMsg);
+
+                                return BadRequest(new ResultT<List<Employee>>
+                                {
+                                    IsSuccess = false,
+                                    ErrorMessage = errorMsg,
+                                    Count = 0,
+                                    Data = null
+                                });
+                            }
+                        }
+                    }
+
+                    // ======= 3. NẾU KHÔNG TRÙNG -> THỰC HIỆN TẠO MỚI (CREATE) ========
+
+                    var parameters = new[]
+                    {
+                        new SqlParameter("@Name", Name ?? (object)DBNull.Value),
+                        new SqlParameter("@Role", Role ?? (object)DBNull.Value),
+                        new SqlParameter("@PhoneNumber", PhoneNumber ?? (object)DBNull.Value),
+                        new SqlParameter("@Email", Email ?? (object)DBNull.Value),
+                        new SqlParameter("@Address", Address ?? (object)DBNull.Value),
+                        new SqlParameter("@CreatedBy", CreatedBy ?? (object)DBNull.Value)
+                    };
 
                     using (var command = new SqlCommand("Employee_Create", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddRange(parameters);
 
-                        // Capture PRINT / RAISERROR messages
+                        // Capture SQL PRINT messages
                         connection.InfoMessage += (sender, e) => messages.Add(e.Message);
 
                         using (var reader = await command.ExecuteReaderAsync())
@@ -113,8 +155,7 @@ namespace GioiThieuCty.Controllers
                     _logger.LogInformation("SQL Messages: {SqlMessages}", string.Join("; ", messages));
                 }
 
-                _logger.LogInformation("[{HttpMethod}] (Success) {{Name: {Name}, CreatedBy: {CreatedBy}}} SQL: {SqlMessages}",
-                    httpMethod, Name, CreatedBy, string.Join("; ", messages));
+                _logger.LogInformation("[{HttpMethod}] (Success) {{Name: {Name}, CreatedBy: {CreatedBy}}}", httpMethod, Name, CreatedBy);
 
                 return Ok(new ResultT<List<Employee>>
                 {
@@ -126,9 +167,7 @@ namespace GioiThieuCty.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "[{HttpMethod}] (Exception: {Message}) {{Name: {Name}, CreatedBy: {CreatedBy}}}",
-                    httpMethod, ex.Message, Name, CreatedBy);
-
+                _logger.LogError(ex, "[{HttpMethod}] (Exception) {{Name: {Name}}}", httpMethod, Name);
                 return StatusCode(500, new ResultT<List<Employee>>
                 {
                     IsSuccess = false,
@@ -256,7 +295,7 @@ namespace GioiThieuCty.Controllers
             DateTime? LastModifiedDateStart,
             DateTime? LastModifiedDateEnd)
 
-        
+
         /*        public int Id { get; set; }
                 public string Name { get; set; }
                 public string Role { get; set; }
@@ -308,7 +347,7 @@ namespace GioiThieuCty.Controllers
                 }
 
                 var result = await _context.Employee.FromSqlRaw(
-                    $"EXEC Employee_Read @Id",
+                    $"EXEC Employee_Read @Id, @Name, @Role, @PhoneNumber, @Email, @Address, @CreatedBy, @CreatedDateStart, @CreatedDateEnd, @LastModifiedBy, @LastModifiedDateStart, @LastModifiedDateEnd",
                     parameters).ToListAsync();
 
                 // Log SQL messages
