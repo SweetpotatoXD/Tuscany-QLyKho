@@ -156,19 +156,37 @@ namespace GioiThieuCty.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<ResultT<string>>> Delete(int id, [FromQuery] string? lastModifiedBy)
         {
+            using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {
-                var parameters = new[] {
+                string deleteDetailSql = @"UPDATE InboundDetail SET IsDeleted = 1, LastModifiedBy = @LastModifiedBy, LastModifiedDate = GETDATE() WHERE InboundReceiptId = @Id AND IsDeleted = 0";
+
+                var detailParams = new[] {
                     new SqlParameter("@Id", id),
                     new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
                 };
 
-                await _context.Database.ExecuteSqlRawAsync("EXEC InboundReceipt_SoftDelete @Id, @LastModifiedBy", parameters);
+                await _context.Database.ExecuteSqlRawAsync(deleteDetailSql, detailParams);
 
-                return Ok(new ResultT<string> { IsSuccess = true, Data = "Soft deleted successfully" });
+                    var masterParams = new[] {
+                        new SqlParameter("@Id", id),
+                        new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
+                    };
+
+                await _context.Database.ExecuteSqlRawAsync("EXEC InboundReceipt_SoftDelete @Id, @LastModifiedBy", masterParams);
+
+                await transaction.CommitAsync();
+
+                return Ok(new ResultT<string>
+                {
+                    IsSuccess = true,
+                    Data = "Deleted successfully"
+                });
             }
             catch (Exception ex)
             {
+                await transaction.RollbackAsync();
+                _logger.LogError(ex, "Delete failed");
                 return StatusCode(500, new ResultT<string> { IsSuccess = false, ErrorMessage = ex.Message });
             }
         }
