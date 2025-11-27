@@ -242,6 +242,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-01-15',
     @EmployeeId = 1,
     @SupplierId = 1,
+    @TotalPrice = 36000000, 
     @Note = N'Nhập thịt bò Úc và cá hồi phi lê từ An Phát',
     @CreatedBy = N'admin';
 
@@ -250,6 +251,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-02-05',
     @EmployeeId = 2,
     @SupplierId = 2,
+    @TotalPrice = 44500000, 
     @Note = N'Nhập giấy A4 và máy in từ Minh Tâm Office',
     @CreatedBy = N'manager';
 
@@ -258,6 +260,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-03-10',
     @EmployeeId = 3,
     @SupplierId = 3,
+    @TotalPrice = 3900000,
     @Note = N'Nhập thùng carton và túi nhựa từ Trung Nam',
     @CreatedBy = N'staff01';
 
@@ -266,6 +269,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-04-12',
     @EmployeeId = 2,
     @SupplierId = 4,
+    @TotalPrice = 100000000,
     @Note = N'Nhập chip Intel và màn hình LG từ Sao Việt',
     @CreatedBy = N'manager';
 
@@ -274,6 +278,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-05-25',
     @EmployeeId = 4,
     @SupplierId = 5,
+    @TotalPrice = 15000000,
     @Note = N'Nhập nước giặt Omo và khăn giấy Pulppy từ Hưng Thịnh',
     @CreatedBy = N'admin';
 GO

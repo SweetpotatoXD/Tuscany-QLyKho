@@ -1,3 +1,6 @@
-wwwroot\css\nhanvien.css
 wwwroot\js\nhanvien.js
+wwwroot\css\nhanvien.css
 wwwroot\Nhanvien.html
+wwwroot\js\nhap.js
+wwwroot\css\nhap.css
+wwwroot\Nhap.html
