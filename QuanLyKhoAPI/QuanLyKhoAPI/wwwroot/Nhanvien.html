@@ -13,7 +13,11 @@
         <div class="ui container">
             <a class="item" href="TrangChu.html">Trang chủ</a>
             <a class="item" href="Nhap.html">Nhập kho</a>
+            <a class="item" href="Xuat.html">Xuất kho</a>
             <a class="item active" href="NhanVien.html">Nhân viên</a>
+            <a class="item" href="NhaCungCap.html">Nhà cung cấp</a>
+            <a class="item" href="KhachHang.html">Khách hàng</a>
+            <a class="item" href="SanPham.html">Sản phẩm</a>
             <div class="right menu" id="authMenu"></div>
         </div>
     </div>
@@ -21,7 +25,7 @@
     <div class="ui container" style="margin-top: 20px;">
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-            <h2 class="ui header" style="margin: 0;"> Quản Lý Nhân Viên</h2>
+            <h2 class="ui header" style="margin: 0;">👨🏽‍💼 Quản Lý Nhân Viên</h2>
             <div>
                 <button class="ui teal basic button" id="btnToggleFilter">
                     <i class="filter icon"></i> Bộ lọc
@@ -37,26 +41,16 @@
                 <h4 class="ui header"><i class="search icon"></i> Tìm kiếm nâng cao</h4>
                 <div class="ui form">
                     <div class="four fields">
-                        <div class="field"><label>Id</label><input type="number" id="searchId" placeholder="ID..."></div>
-                        <div class="field"><label>Tên</label><input type="text" id="searchName" placeholder="Tên NV..."></div>
+                        <div class="field"><label>Mã nhân viên</label><input type="number" id="searchId" placeholder="ID..."></div>
+                        <div class="field"><label>Tên nhân viên</label><input type="text" id="searchName" placeholder="Tên NV..."></div>
                         <div class="field"><label>Chức vụ</label><input type="text" id="searchRole" placeholder="Chức vụ..."></div>
                         <div class="field"><label>SĐT</label><input type="text" id="searchPhone" placeholder="SĐT..."></div>
-                    </div>
-                    <div class="four fields">
                         <div class="field"><label>Email</label><input type="text" id="searchEmail" placeholder="Email..."></div>
                         <div class="field"><label>Địa chỉ</label><input type="text" id="searchAddress" placeholder="Địa chỉ..."></div>
-                        <div class="field"><label>Người tạo</label><input type="text" id="searchCreatedBy" placeholder="Người tạo..."></div>
-                        <div class="field"><label>Người sửa</label><input type="text" id="searchLastModifiedBy" placeholder="Người sửa..."></div>
-                    </div>
-                    <div class="four fields">
-                        <div class="field"><label>Ngày tạo (Từ)</label><input type="date" id="searchCreatedDateStart"></div>
-                        <div class="field"><label>Ngày tạo (Đến)</label><input type="date" id="searchCreatedDateEnd"></div>
-                        <div class="field"><label>Ngày sửa (Từ)</label><input type="date" id="searchModifiedDateStart"></div>
-                        <div class="field"><label>Ngày sửa (Đến)</label><input type="date" id="searchModifiedDateEnd"></div>
                     </div>
                     <div class="field" style="text-align: right;">
                         <button class="ui teal button" id="btnSearch"><i class="search icon"></i> Tìm</button>
-                        <button class="ui button" id="btnClearSearch"><i class="eraser icon"></i> Xóa & Đóng</button>
+                        <button class="ui button" id="btnClearSearch"><i class="eraser icon"></i> Xóa lọc</button>
                     </div>
                 </div>
             </div>
@@ -65,7 +59,7 @@
         <table class="ui celled table" id="employeeTable">
             <thead>
                 <tr>
-                    <th>Mã NV</th>
+                    <th>Mã nhân viên</th>
                     <th>Họ tên</th>
                     <th>Chức vụ</th>
                     <th>SĐT</th>
@@ -93,7 +87,7 @@
 
                 <div class="fields">
                     <div class="field">
-                        <label>Mã NV</label>
+                        <label>Mã nhân viên</label>
                         <input type="text" id="maNV" placeholder="Tự động" disabled>
                     </div>
                     <div class="required field">

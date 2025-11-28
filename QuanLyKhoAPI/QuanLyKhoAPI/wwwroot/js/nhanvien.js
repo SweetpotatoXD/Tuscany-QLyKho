@@ -285,8 +285,8 @@ function renderTable(data) {
                 <td>${email}</td>
                 <td>${address}</td>
                 <td>
-                    <button class="ui blue button editBtn">Sửa</button>
-                    <button class="ui red button deleteBtn">Xóa</button>
+                    <button class="ui blue mini button editBtn">Sửa</button>
+                    <button class="ui red mini button deleteBtn">Xóa</button>
                 </td>
             </tr>`;
         tbody.append(tr);

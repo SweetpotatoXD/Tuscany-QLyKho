@@ -44,7 +44,7 @@ namespace GioiThieuCty.Models.DB
         public string PasswordHash { get; set; }
         public bool IsAdmin { get; set; }
 
-        public int? CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         public int? LastModifiedBy { get; set; }
         public DateTime? LastModifiedDate { get; set; }
@@ -205,6 +205,7 @@ namespace GioiThieuCty.Models.DB
         public int? EmployeeId { get; set; }
         public int? CustomerId { get; set; }
         public int? TotalPrice { get; set; }
+        public string? Status { get; set; }
         public string? Note { get; set; }
         public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
@@ -228,6 +229,7 @@ namespace GioiThieuCty.Models.DB
     public class Product
     {
         public int Id { get; set; }
+        public int? SupplierId { get; set; }
         public string? Name { get; set; }
         public int? Quantity { get; set; }
         public string? Unit { get; set; }
@@ -254,7 +256,7 @@ namespace GioiThieuCty.Models.DB
         public int Id { get; set; }
         public string? Name { get; set; }
         public string? Email { get; set; }
-        public int? PhoneNumber { get; set; }
+        public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
         public string? Description { get; set; }
 

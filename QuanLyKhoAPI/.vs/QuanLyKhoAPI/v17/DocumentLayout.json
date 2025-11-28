@@ -3,56 +3,32 @@
   "WorkspaceRootPath": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\db\\admin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\nhanvien.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\auditlogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\nhacungcap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\nhacungcap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\inboundreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\inboundreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\sanpham.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\sanpham.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\js\\nhap.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\js\\nhap.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\xuat.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\xuat.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\js\\xuat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\js\\xuat.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\nhap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\nhap.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\css\\nhap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\css\\nhap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\data\\gioithieuctycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\data\\gioithieuctycontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\css\\nhanvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\css\\nhanvien.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\logs\\log20251125.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\model\\objectresponse\\resultt.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\controllers\\extension\\swaggerdropdownoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\controllers\\extension\\swaggerdropdownoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|d:\\tuscany-qlykho\\quanlykhoapi\\quanlykhoapi\\wwwroot\\css\\xuat.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{BA779F60-C3A6-4480-9746-FE93F571128B}|QuanLyKhoAPI\\QuanLyKhoAPI.csproj|solutionrelative:quanlykhoapi\\wwwroot\\css\\xuat.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,169 +58,94 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "nhanvien.css",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
-              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\css\\nhanvien.css",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-27T21:01:40.581Z",
+              "DocumentIndex": 1,
+              "Title": "NhaCungCap.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\NhaCungCap.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\NhaCungCap.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\NhaCungCap.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\NhaCungCap.html",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAFQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-28T17:33:05.942Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "InboundReceiptController.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\InboundReceiptController.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\InboundReceiptController.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\InboundReceiptController.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\InboundReceiptController.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAYwFEAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-27T20:09:02.823Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "nhap.js",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\nhap.js",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\js\\nhap.js",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\nhap.js",
-              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\js\\nhap.js",
-              "ViewState": "AgIAAIUBAAAAAAAAAAAYwJMBAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-27T17:34:08.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Nhap.html",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhap.html",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\Nhap.html",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhap.html",
-              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\Nhap.html",
-              "ViewState": "AgIAACUAAAAAAAAAAADwvzUAAAAmAAAAAAAAAA==",
+              "Title": "SanPham.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\SanPham.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\SanPham.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\SanPham.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\SanPham.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-11-27T17:34:19.605Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "nhap.css",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhap.css",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\css\\nhap.css",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\nhap.css",
-              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\css\\nhap.css",
-              "ViewState": "AgIAAD8AAAAAAAAAAADwv1oAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2025-11-27T17:33:56.956Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ResultT.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\model\\objectResponse\\ResultT.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T13:18:12.927Z",
+              "WhenOpened": "2025-11-28T19:20:47.874Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Admin.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\DB\\Admin.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\model\\DB\\Admin.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\model\\DB\\Admin.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwBQAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T13:01:46.156Z",
+              "Title": "Nhanvien.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\Nhanvien.html",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-28T19:17:59.034Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\appsettings.json",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\appsettings.json",
-              "RelativeToolTip": "QuanLyKhoAPI\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-11-25T12:01:21.996Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Program.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Program.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Program.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-25T11:53:20.974Z",
+              "DocumentIndex": 5,
+              "Title": "Nhap.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhap.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\Nhap.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Nhap.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\Nhap.html",
+              "ViewState": "AgIAAGUAAAAAAAAAAAAtwH4AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-28T18:56:58.217Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuditLogController.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\AuditLogController.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAApwG0AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:34:11.953Z",
+              "DocumentIndex": 4,
+              "Title": "xuat.js",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\xuat.js",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\js\\xuat.js",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\js\\xuat.js",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\js\\xuat.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQCAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-28T17:11:53.962Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GioiThieuCtyContext.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Data\\GioiThieuCtyContext.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAcwB4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T15:39:41.195Z",
+              "Title": "xuat.css",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\xuat.css",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\css\\xuat.css",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\css\\xuat.css",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\css\\xuat.css",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAswF8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-28T17:11:19.191Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "log20251125.txt",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\logs\\log20251125.txt",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\logs\\log20251125.txt",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\logs\\log20251125.txt",
-              "RelativeToolTip": "QuanLyKhoAPI\\logs\\log20251125.txt",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAABjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-11-25T12:01:32.591Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SwaggerDropdownOperationFilter.cs",
-              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
-              "RelativeDocumentMoniker": "QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
-              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
-              "RelativeToolTip": "QuanLyKhoAPI\\Controllers\\extension\\SwaggerDropdownOperationFilter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-24T16:53:40.131Z"
+              "DocumentIndex": 3,
+              "Title": "Xuat.html",
+              "DocumentMoniker": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Xuat.html",
+              "RelativeDocumentMoniker": "QuanLyKhoAPI\\wwwroot\\Xuat.html",
+              "ToolTip": "D:\\Tuscany-QLyKho\\QuanLyKhoAPI\\QuanLyKhoAPI\\wwwroot\\Xuat.html",
+              "RelativeToolTip": "QuanLyKhoAPI\\wwwroot\\Xuat.html",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAtwIIAAABdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-11-28T17:08:05.334Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Khách Hàng</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="css/khachhang.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+    <div class="ui inverted menu">
+        <div class="ui container">
+            <a class="item" href="TrangChu.html">Trang chủ</a>
+            <a class="item" href="Nhap.html">Nhập kho</a>
+            <a class="item" href="Xuat.html">Xuất kho</a>
+            <a class="item" href="NhanVien.html">Nhân viên</a>
+            <a class="item" href="NhaCungCap.html">Nhà cung cấp</a>
+            <a class="item active" href="KhachHang.html">Khách hàng</a>
+            <a class="item" href="SanPham.html">Sản phẩm</a>
+            <div class="right menu" id="authMenu"></div>
+        </div>
+    </div>
+
+    <div class="ui container" style="margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 class="ui header" style="margin: 0;">👥 Quản Lý Khách Hàng</h2>
+            <div>
+                <button class="ui teal basic button" id="btnToggleFilter"><i class="filter icon"></i> Bộ lọc</button>
+                <button class="ui teal basic button" id="btnAdd"><i class="plus icon"></i> Thêm khách hàng</button>
+            </div>
+        </div>
+
+        <div id="filterArea" style="display: none;">
+            <div class="ui segment secondary">
+                <div class="ui form">
+                    <div class="fields">
+                        <div class="field">
+                            <label>Mã khách hàng</label>
+                            <input type="number" id="searchId" placeholder="ID...">
+                        </div>
+                        <div class="field">
+                            <label>Tên khách hàng</label>
+                            <input type="text" id="searchName" placeholder="Tên...">
+                        </div>
+                        <div class="field">
+                            <label>Loại khách hàng</label>
+                            <select id="searchType" style="width: 100%; height: 38px; padding: 5px 10px; border: 1px solid rgba(34,36,38,.15); border-radius: 4px; background: #fff;">
+                                <option value="">-- Tất cả --</option>
+                                <option value="Cá nhân">Cá nhân</option>
+                                <option value="Doanh nghiệp">Doanh nghiệp</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Email</label>
+                            <input type="text" id="searchEmail" placeholder="Email...">
+                        </div>
+                        <div class="field">
+                            <label>SĐT</label>
+                            <input type="text" id="searchPhone" placeholder="SĐT...">
+                        </div>
+                        <div class="field">
+                            <label>Địa chỉ</label>
+                            <input type="text" id="searchAddress" placeholder="Địa chỉ...">
+                        </div>
+                    </div>
+                    <div class="field" style="text-align: right;">
+                        <button class="ui teal button" id="btnSearch"><i class="search icon"></i> Tìm</button>
+                        <button class="ui button" id="btnClearSearch"><i class="eraser icon"></i> Xóa lọc</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="ui celled table" id="customerTable">
+            <thead>
+                <tr>
+                    <th>Mã khách hàng</th>
+                    <th>Tên khách hàng</th>
+                    <th>Loại khách hàng</th>
+                    <th>SĐT</th>
+                    <th>Email</th>
+                    <th>Địa chỉ</th>
+                    <th>Công nợ</th>
+                    <th class="action-col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div style="text-align: center; color: #999; margin-top: 20px;">
+            <i class="check circle outline icon"></i> Đã hiển thị hết danh sách
+        </div>
+    </div>
+
+    <div class="ui modal" id="customerModal">
+        <i class="close icon"></i>
+        <div class="header" id="modalHeader">Thông tin Khách hàng</div>
+        <div class="content">
+            <form class="ui form" id="customerForm" novalidate>
+                <input type="hidden" id="hiddenId">
+
+                <div class="fields">
+                    <div class="field">
+                        <label>Mã khách hàng</label>
+                        <input type="text" id="maKH" placeholder="Tự động" disabled>
+                    </div>
+                    <div class="required ten wide field">
+                        <label>Tên khách hàng</label>
+                        <input type="text" id="name" placeholder="Nguyễn Văn A..." required>
+                    </div>
+                    <div class="required six wide field">
+                        <label>Loại khách hàng</label>
+                        <select id="customerType" class="ui dropdown" required>
+                            <option value="">Chọn loại</option>
+                            <option value="Cá nhân">Cá nhân</option>
+                            <option value="Doanh nghiệp">Doanh nghiệp</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="required six wide field">
+                        <label>Số điện thoại</label>
+                        <input type="text" id="phone" placeholder="09xxxx" required>
+                    </div>
+                    <div class="required ten wide field">
+                        <label>Email</label>
+                        <input type="email" id="email" placeholder="contact@abc.com" required>
+                    </div>
+                    <div class="required seven wide field">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="address" placeholder="Địa chỉ..." required>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label>Công nợ</label>
+                    <input type="number" id="debt" value="0" disabled style="background-color: #f9fafb; font-weight: bold;">
+                </div>
+
+                <div class="ui error message" id="globalError" style="display: none;">
+                    <p>Không để trống ô dữ liệu bắt buộc</p>
+                </div>
+
+                <button type="submit" id="btnRealSubmit" style="display: none;"></button>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">Hủy bỏ</div>
+            <div class="ui green right labeled icon button" id="btnSaveModal">
+                Lưu thông tin
+                <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/khachhang.js"></script>
+</body>
+</html>

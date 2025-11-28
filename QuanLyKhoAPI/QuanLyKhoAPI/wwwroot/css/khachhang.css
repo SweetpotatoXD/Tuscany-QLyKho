@@ -1,0 +1,53 @@
+.ui.form .fields {
+    margin-bottom: 30px;
+}
+
+.ui.form .field {
+    position: relative;
+    margin-bottom: 5px;
+}
+
+    .ui.form .field.error input,
+    .ui.form .field.error select,
+    .ui.form .field.error input:focus {
+        background-color: #fff6f6 !important;
+        border-color: #db2828 !important;
+        color: #db2828 !important;
+        padding: 0.67857143em 1em !important;
+        background-image: none !important;
+        box-shadow: none !important;
+    }
+
+.validation-msg {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 5px;
+    color: #db2828 !important;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+    z-index: 9999;
+    pointer-events: none;
+    padding-left: 6px;
+}
+
+#globalError {
+    background-color: #fff6f6 !important;
+    border: 1px solid #db2828 !important;
+    color: #db2828 !important;
+    box-shadow: none !important;
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.action-col {
+    white-space: nowrap !important;
+    width: 1% !important;
+    text-align: center !important;
+}
+
+.action-col .button {
+    margin: 0 2px !important;
+}

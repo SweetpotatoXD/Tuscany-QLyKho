@@ -21,6 +21,7 @@ namespace GioiThieuCty.Data
         public DbSet<GioiThieuCty.Models.DB.InboundDetail> InboundDetail { get; set; }
         public DbSet<GioiThieuCty.Models.DB.InboundReceipt> InboundReceipt { get; set; }
         public DbSet<GioiThieuCty.Models.DB.OutboundDetail> OutboundDetail { get; set; }
+        public DbSet<GioiThieuCty.Models.DB.OutboundReceipt> OutboundReceipt { get; set; }
         public DbSet<GioiThieuCty.Models.DB.Product> Product { get; set; }
         public DbSet<GioiThieuCty.Models.DB.Supplier> Supplier { get; set; }
 
@@ -31,6 +32,9 @@ namespace GioiThieuCty.Data
 
             modelBuilder.Entity<OutboundDetail>()
                 .ToTable(tb => tb.HasTrigger("Trigger"));
+
+            modelBuilder.Entity<OutboundReceipt>()
+               .ToTable(tb => tb.HasTrigger("Trigger"));
         }
     }
 }

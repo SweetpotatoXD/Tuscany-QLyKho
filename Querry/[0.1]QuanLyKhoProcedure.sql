@@ -1250,6 +1250,7 @@ CREATE OR ALTER PROCEDURE OutboundReceipt_Create
     @EmployeeId INT,
     @CustomerId INT,
     @TotalPrice INT,
+    @Status NVARCHAR(50),
     @Note NVARCHAR(255) = NULL,
     @CreatedBy NVARCHAR(32)
 AS
@@ -1258,11 +1259,11 @@ BEGIN
 
     INSERT INTO OutboundReceipt
     (
-        ReceiptDate, EmployeeId, CustomerId, Note, CreatedBy
+        ReceiptDate, EmployeeId, CustomerId, Status, Note, CreatedBy
     )
     VALUES
     (
-        @ReceiptDate, @EmployeeId, @CustomerId, @Note, @CreatedBy
+        @ReceiptDate, @EmployeeId, @CustomerId, @Status, @Note, @CreatedBy
     );
 END
 GO
@@ -1292,6 +1293,7 @@ BEGIN
             EmployeeId,
             CustomerId,
             TotalPrice,
+            Status,
             Note,
             CreatedBy,
             CreatedDate,
@@ -1386,6 +1388,7 @@ CREATE OR ALTER PROCEDURE OutboundReceipt_Update
     @EmployeeId INT,
     @CustomerId INT,
     @TotalPrice INT,
+    @Status NVARCHAR(50),
     @Note NVARCHAR(255),
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1398,6 +1401,7 @@ BEGIN
         EmployeeId = @EmployeeId,
         CustomerId = @CustomerId,
         TotalPrice = @TotalPrice,
+        Status = @Status,
         Note = @Note,
         LastModifiedBy = @LastModifiedBy,
         LastModifiedDate = GETDATE()

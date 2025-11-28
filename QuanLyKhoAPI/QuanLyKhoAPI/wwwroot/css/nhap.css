@@ -12,7 +12,7 @@ body {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* === 2. FORM & VALIDATION (ĐỒNG BỘ VỚI NHÂN VIÊN) === */
+/* === 2. FORM & VALIDATION === */
 .ui.form .fields {
     margin-bottom: 30px;
 }
@@ -22,7 +22,6 @@ body {
     margin-bottom: 5px;
 }
 
-    /* Ô input khi lỗi: Viền đỏ đậm, chữ đỏ, không icon */
     .ui.form .field.error input,
     .ui.form .field.error input:focus,
     .ui.form .field.error select {
@@ -34,7 +33,6 @@ body {
         box-shadow: none !important;
     }
 
-/* Dòng thông báo lỗi cụ thể (Dùng cho phần nhập chi tiết sản phẩm) */
 .validation-msg {
     position: absolute;
     top: 100%;
@@ -46,33 +44,30 @@ body {
     white-space: nowrap;
     z-index: 9999;
     pointer-events: none;
-    padding-left: 6px; /* Thẳng hàng với chữ trong ô */
+    padding-left: 1em;
 }
 
-/* Khung thông báo lỗi chung ở dưới cùng (Dùng cho Master) */
+/* Khung thông báo lỗi chung (Đồng bộ style) */
 #globalError, #productError {
-    background-color: #fff6f6 !important; /* Nền hồng */
-    border: 1px solid #db2828 !important; /* Viền đỏ đậm */
-    color: #db2828 !important; /* Chữ đỏ đậm */
+    background-color: #fff6f6 !important;
+    border: 1px solid #db2828 !important;
+    color: #db2828 !important;
     box-shadow: none !important;
-    margin-top: 15px !important; /* Cách phần trên một chút */
-    margin-bottom: 10px !important; /* Cách phần dưới một chút */
-
-    text-align: center !important; /* Căn giữa chữ */
-    font-weight: bold !important; /* Chữ đậm */
-    font-size: 14px !important; /* Kích thước chữ rõ ràng */
-    border-radius: 4px !important; /* Bo góc nhẹ */
-    padding: 10px !important; /* Khoảng đệm bên trong */
+    margin-top: 15px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+    border-radius: 4px !important;
+    padding: 10px !important;
 }
 
-    /* Đảm bảo thẻ p bên trong cũng nhận màu đỏ */
     #globalError p, #productError p {
         color: #db2828 !important;
         margin: 0 !important;
     }
 
-/* === 3. STYLE RIÊNG CHO MODAL NHẬP KHO (Master-Detail) === */
-/* Modal rộng hơn và căn giữa */
+/* Style cho Modal */
 .ui.modal {
     width: 85% !important;
     left: 7.5% !important;
@@ -80,11 +75,39 @@ body {
     top: 5% !important;
 }
 
-/* Khu vực nhập sản phẩm con */
 #productEntryArea {
-    background-color: #f9fafb;
+    background: #f9fafb;
     padding: 15px;
     border: 1px solid #dedede;
     border-radius: 5px;
     margin-bottom: 15px;
+}
+
+/* Cho phép click vào dropdown bị khóa để hiện thông báo */
+.ui.dropdown.disabled {
+    pointer-events: auto !important;
+    cursor: not-allowed !important;
+    opacity: 0.5 !important;
+}
+
+/* === FIX LỖI NÚT BẤM BỊ ĐÈ LÊN NHAU === */
+.action-col {
+    white-space: nowrap !important; /* Không cho xuống dòng */
+    width: 1% !important; /* Co gọn cột */
+    text-align: center !important;
+}
+
+.action-col .button {
+    margin: 0 2px !important;
+}
+
+/* ... (Các CSS cũ giữ nguyên) ... */
+
+/* Thêm cái này để chắc chắn Dropdown của Semantic có thể bị Overlay đè lên */
+#prodIdField {
+    position: relative;
+}
+
+#prodOverlay {
+    cursor: not-allowed; /* Hiện chuột cấm */
 }
