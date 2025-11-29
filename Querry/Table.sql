@@ -167,6 +167,10 @@ CREATE TABLE OutboundReceipt(
     EmployeeId INT,
     CustomerId INT,
     TotalPrice INT,
+<<<<<<< HEAD
+=======
+    Status NVARCHAR(50) CHECK (Status IN (N'Chưa thanh toán', N'Đã thanh toán')),
+>>>>>>> CALL-API
     Note NVARCHAR(255),
 
     CreatedBy NVARCHAR(32),

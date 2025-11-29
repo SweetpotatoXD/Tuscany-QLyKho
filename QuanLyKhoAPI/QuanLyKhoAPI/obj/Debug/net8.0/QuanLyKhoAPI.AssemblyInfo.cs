@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuanLyKhoAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35c64ef9e630e82de4b6d3a200e3ccc8d91a1a45")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40e78707757dded074b111724a61c19d51a0cae7")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuanLyKhoAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuanLyKhoAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

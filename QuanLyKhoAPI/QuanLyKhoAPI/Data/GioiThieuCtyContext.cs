@@ -24,5 +24,17 @@ namespace GioiThieuCty.Data
         public DbSet<GioiThieuCty.Models.DB.OutboundReceipt> OutboundReceipt { get; set; }
         public DbSet<GioiThieuCty.Models.DB.Product> Product { get; set; }
         public DbSet<GioiThieuCty.Models.DB.Supplier> Supplier { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<InboundDetail>()
+                .ToTable(tb => tb.HasTrigger("Trigger"));
+
+            modelBuilder.Entity<OutboundDetail>()
+                .ToTable(tb => tb.HasTrigger("Trigger"));
+
+            modelBuilder.Entity<OutboundReceipt>()
+               .ToTable(tb => tb.HasTrigger("Trigger"));
+        }
     }
 }

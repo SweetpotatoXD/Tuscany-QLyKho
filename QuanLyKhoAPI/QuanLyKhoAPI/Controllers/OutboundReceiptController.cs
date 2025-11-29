@@ -80,6 +80,11 @@ namespace GioiThieuCty.Controllers
             DateTime? ReceiptDate,
             int? EmployeeId,
             int? CustomerId,
+<<<<<<< HEAD
+=======
+            int? TotalPrice,
+            string? Status,
+>>>>>>> CALL-API
             string? Note,
             string? CreatedBy)
         {
@@ -91,6 +96,11 @@ namespace GioiThieuCty.Controllers
                     ReceiptDate = ReceiptDate ?? DateTime.Now,
                     EmployeeId = EmployeeId,
                     CustomerId = CustomerId,
+<<<<<<< HEAD
+=======
+                    TotalPrice = TotalPrice,
+                    Status = Status,
+>>>>>>> CALL-API
                     Note = Note,
                     CreatedBy = CreatedBy,
                     CreatedDate = DateTime.Now,
@@ -127,6 +137,11 @@ namespace GioiThieuCty.Controllers
             DateTime? ReceiptDate,
             int? EmployeeId,
             int? CustomerId,
+<<<<<<< HEAD
+=======
+            int? TotalPrice,
+            string? Status,
+>>>>>>> CALL-API
             string? Note,
             string? LastModifiedBy)
         {
@@ -137,12 +152,21 @@ namespace GioiThieuCty.Controllers
                     new SqlParameter("@ReceiptDate", (object)ReceiptDate ?? DBNull.Value),
                     new SqlParameter("@EmployeeId", (object)EmployeeId ?? DBNull.Value),
                     new SqlParameter("@CustomerId", (object)CustomerId ?? DBNull.Value),
+<<<<<<< HEAD
+=======
+                    new SqlParameter("@TotalPrice", (object)TotalPrice ?? DBNull.Value),
+                    new SqlParameter("@Status", (object)Status ?? DBNull.Value),
+>>>>>>> CALL-API
                     new SqlParameter("@Note", (object)Note ?? DBNull.Value),
                     new SqlParameter("@LastModifiedBy", (object)LastModifiedBy ?? DBNull.Value)
                 };
 
                 await _context.Database.ExecuteSqlRawAsync(
+<<<<<<< HEAD
                     "EXEC OutboundReceipt_Update @Id, @ReceiptDate, @EmployeeId, @CustomerId, @Note, @LastModifiedBy",
+=======
+                    "EXEC OutboundReceipt_Update @Id, @ReceiptDate, @EmployeeId, @CustomerId, @TotalPrice, @Status, @Note, @LastModifiedBy",
+>>>>>>> CALL-API
                     parameters);
 
                 return Ok(new ResultT<string> { IsSuccess = true, Data = "Updated successfully" });

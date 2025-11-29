@@ -242,6 +242,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-01-15',
     @EmployeeId = 1,
     @SupplierId = 1,
+    @TotalPrice = 36000000, 
     @Note = N'Nhập thịt bò Úc và cá hồi phi lê từ An Phát',
     @CreatedBy = N'admin';
 
@@ -250,6 +251,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-02-05',
     @EmployeeId = 2,
     @SupplierId = 2,
+    @TotalPrice = 44500000, 
     @Note = N'Nhập giấy A4 và máy in từ Minh Tâm Office',
     @CreatedBy = N'manager';
 
@@ -258,6 +260,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-03-10',
     @EmployeeId = 3,
     @SupplierId = 3,
+    @TotalPrice = 3900000,
     @Note = N'Nhập thùng carton và túi nhựa từ Trung Nam',
     @CreatedBy = N'staff01';
 
@@ -266,6 +269,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-04-12',
     @EmployeeId = 2,
     @SupplierId = 4,
+    @TotalPrice = 100000000,
     @Note = N'Nhập chip Intel và màn hình LG từ Sao Việt',
     @CreatedBy = N'manager';
 
@@ -274,6 +278,7 @@ EXEC InboundReceipt_Create
     @ReceiptDate = '2025-05-25',
     @EmployeeId = 4,
     @SupplierId = 5,
+    @TotalPrice = 15000000,
     @Note = N'Nhập nước giặt Omo và khăn giấy Pulppy từ Hưng Thịnh',
     @CreatedBy = N'admin';
 GO
@@ -363,6 +368,8 @@ EXEC OutboundReceipt_Create
     @ReceiptDate = '2025-06-01',
     @EmployeeId = 3,        -- Lê Văn C (Kinh doanh)
     @CustomerId = 1,        -- Nguyễn Văn Minh
+    @TotalPrice = 4450000,
+    @Status = N'Đã thanh toán',
     @Note = N'Xuất 10 kg thịt bò Úc và 5 gói cá hồi',
     @CreatedBy = N'manager';
 
@@ -371,6 +378,8 @@ EXEC OutboundReceipt_Create
     @ReceiptDate = '2025-06-05',
     @EmployeeId = 1,        -- Nguyễn Văn A (Kế toán)
     @CustomerId = 2,        -- Công ty TNHH ABC
+    @TotalPrice = 11750000,
+    @Status = N'Đã thanh toán',
     @Note = N'Xuất 2 máy in và 50 ream giấy A4',
     @CreatedBy = N'admin';
 
@@ -379,6 +388,8 @@ EXEC OutboundReceipt_Create
     @ReceiptDate = '2025-06-10',
     @EmployeeId = 3,        -- Lê Văn C
     @CustomerId = 3,        -- Lê Thị Hồng
+    @TotalPrice = 390000,
+    @Status = N'Đã thanh toán',
     @Note = N'Xuất 100 túi nhựa và 20 thùng carton',
     @CreatedBy = N'staff01';
 
@@ -387,6 +398,8 @@ EXEC OutboundReceipt_Create
     @ReceiptDate = '2025-06-15',
     @EmployeeId = 2,        -- Trần Thị B (IT Support)
     @CustomerId = 4,        -- Công ty Cổ phần XYZ
+    @TotalPrice = 32400000,
+    @Status = N'Đã thanh toán',
     @Note = N'Xuất 5 chip Intel và 3 màn hình LG',
     @CreatedBy = N'manager';
 
@@ -395,6 +408,8 @@ EXEC OutboundReceipt_Create
     @ReceiptDate = '2025-06-20',
     @EmployeeId = 4,        -- Phạm Thị D (Marketing)
     @CustomerId = 5,        -- Phạm Quốc Bảo
+    @TotalPrice = 7050000,
+    @Status = N'Đã thanh toán',
     @Note = N'Xuất 30 chai nước giặt và 50 bịch khăn giấy Pulppy',
     @CreatedBy = N'admin';
 GO

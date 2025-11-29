@@ -2,7 +2,7 @@
 GO
 
 -- Lấy Name của Employee theo Id
-CREATE PROCEDURE Employee_GetName
+CREATE OR ALTER PROCEDURE Employee_GetName
     @Id INT
 AS
 BEGIN
@@ -15,7 +15,7 @@ END
 GO
 
 -- Tạo mới Employee
-CREATE PROCEDURE Employee_Create
+CREATE OR ALTER PROCEDURE Employee_Create
     @Name NVARCHAR(64),
     @Role NVARCHAR(32),
     @PhoneNumber NVARCHAR(15),
@@ -40,7 +40,7 @@ END
 GO
 
 -- Đọc Employee (có filter + phân trang như mẫu)
-CREATE PROCEDURE Employee_Read
+CREATE OR ALTER PROCEDURE Employee_Read
     @Id INT = NULL,
     @Name NVARCHAR(64) = NULL,
     @Role NVARCHAR(32) = NULL,
@@ -149,9 +149,13 @@ BEGIN
         (@PhoneNumber IS NOT NULL AND @PhoneNumber <> '' AND PhoneNumber = @PhoneNumber)
     )
 END
+<<<<<<< HEAD
+=======
+GO
+>>>>>>> CALL-API
 
 -- Update Employee
-CREATE PROCEDURE Employee_Update
+CREATE OR ALTER PROCEDURE Employee_Update
     @Id INT,
     @Name NVARCHAR(64),
     @Role NVARCHAR(32),
@@ -176,7 +180,7 @@ END
 GO
 
 -- Xóa mềm Employee
-CREATE PROCEDURE Employee_SoftDelete
+CREATE OR ALTER PROCEDURE Employee_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -190,7 +194,7 @@ END
 GO
 
 -- Lấy Username theo Id
-CREATE PROCEDURE Account_GetUsername
+CREATE OR ALTER PROCEDURE Account_GetUsername
     @Id INT
 AS
 BEGIN
@@ -203,7 +207,7 @@ END
 GO
 
 -- Tạo mới Account
-CREATE PROCEDURE Account_Create
+CREATE OR ALTER PROCEDURE Account_Create
     @EmployeeId INT,
     @Username NVARCHAR(32),
     @PasswordHash NVARCHAR(256),
@@ -225,7 +229,7 @@ END
 GO
 
 -- Đọc Account
-CREATE PROCEDURE Account_Read
+CREATE OR ALTER PROCEDURE Account_Read
     @Id INT = NULL,
     @EmployeeId INT = NULL,
     @Username NVARCHAR(32) = NULL,
@@ -309,7 +313,7 @@ END
 GO
 
 -- Update Account
-CREATE PROCEDURE Account_Update
+CREATE OR ALTER PROCEDURE Account_Update
     @Id INT,
     @EmployeeId INT,
     @Username NVARCHAR(32),
@@ -330,7 +334,7 @@ END
 GO
 
 -- Xóa mềm Account
-CREATE PROCEDURE Account_SoftDelete
+CREATE OR ALTER PROCEDURE Account_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -344,7 +348,7 @@ END
 GO
 
 -- Tạo mới Customer
-CREATE PROCEDURE Customer_Create
+CREATE OR ALTER PROCEDURE Customer_Create
     @Name NVARCHAR(255),
     @CustomerType NVARCHAR(50),
     @PhoneNumber VARCHAR(15),
@@ -367,7 +371,7 @@ END
 GO
 
 --Lấy Name của Customer qua Id
-CREATE PROCEDURE Customer_GetName
+CREATE OR ALTER PROCEDURE Customer_GetName
     @Id INT
 AS
 BEGIN
@@ -381,7 +385,7 @@ END
 GO
 
 -- Đọc Customer
-CREATE PROCEDURE Customer_Read
+CREATE OR ALTER PROCEDURE Customer_Read
     @Id INT = NULL,
     @Name NVARCHAR(255) = NULL,
     @CustomerType NVARCHAR(50) = NULL,
@@ -496,7 +500,7 @@ END
 GO
 
 --Update Customer
-CREATE PROCEDURE Customer_Update
+CREATE OR ALTER PROCEDURE Customer_Update
     @Id INT,
     @Name NVARCHAR(255),
     @CustomerType NVARCHAR(50),
@@ -523,7 +527,7 @@ END
 GO
 
 --Xóa mềm Customer
-CREATE PROCEDURE Customer_SoftDelete
+CREATE OR ALTER PROCEDURE Customer_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -539,7 +543,7 @@ END
 GO
 
 -- Tạo mới Supplier
-CREATE PROCEDURE Supplier_Create
+CREATE OR ALTER PROCEDURE Supplier_Create
     @Name NVARCHAR(255),
     @Email VARCHAR(255) = NULL,
     @PhoneNumber VARCHAR(10) = NULL,
@@ -562,7 +566,7 @@ END
 GO
 
 -- Đọc Supplier
-CREATE PROCEDURE Supplier_Read
+CREATE OR ALTER PROCEDURE Supplier_Read
     @Id INT = NULL,
     @Name NVARCHAR(255) = NULL,
     @Email VARCHAR(255) = NULL,
@@ -668,7 +672,7 @@ END
 GO
 
 -- Cập nhật Supplier
-CREATE PROCEDURE Supplier_Update
+CREATE OR ALTER PROCEDURE Supplier_Update
     @Id INT,
     @Name NVARCHAR(255),
     @Email VARCHAR(255),
@@ -695,7 +699,7 @@ END
 GO
 
 -- Xóa mềm Supplier
-CREATE PROCEDURE Supplier_SoftDelete
+CREATE OR ALTER PROCEDURE Supplier_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -713,7 +717,7 @@ END
 GO
 
 -- Tạo mới Product
-CREATE PROCEDURE Product_Create
+CREATE OR ALTER PROCEDURE Product_Create
     @SupplierId INT,
     @Name NVARCHAR(255),
     @Quantity INT = 0,
@@ -735,7 +739,7 @@ END
 GO
 
 -- Lấy Name của Product qua Id
-CREATE PROCEDURE Product_GetName
+CREATE OR ALTER PROCEDURE Product_GetName
     @Id INT
 AS
 BEGIN
@@ -749,7 +753,7 @@ END
 GO
 
 -- Đọc Product
-CREATE PROCEDURE Product_Read
+CREATE OR ALTER PROCEDURE Product_Read
     @Id INT = NULL,
     @SupplierId INT = NULL,
     @Name NVARCHAR(255) = NULL,
@@ -844,7 +848,7 @@ END
 GO
 
 -- Update Product
-CREATE PROCEDURE Product_Update
+CREATE OR ALTER PROCEDURE Product_Update
     @Id INT,
     @SupplierId INT,
     @Name NVARCHAR(255),
@@ -869,7 +873,7 @@ END
 GO
 
 -- Xóa mềm Product
-CREATE PROCEDURE Product_SoftDelete
+CREATE OR ALTER PROCEDURE Product_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -887,11 +891,12 @@ END
 GO
 
 -- Tạo mới InboundReceipt
-CREATE PROCEDURE InboundReceipt_Create
+CREATE OR ALTER PROCEDURE InboundReceipt_Create
     @ReceiptDate DATETIME,
     @EmployeeId INT,
     @SupplierId INT,
     @Note NVARCHAR(255),
+    @TotalPrice INT,
     @CreatedBy NVARCHAR(32)
 AS
 BEGIN
@@ -899,17 +904,17 @@ BEGIN
 
     INSERT INTO InboundReceipt
     (
-        ReceiptDate, EmployeeId, SupplierId, Note, CreatedBy
+        ReceiptDate, EmployeeId, SupplierId, TotalPrice, Note, CreatedBy
     )
     VALUES
     (
-        @ReceiptDate, @EmployeeId, @SupplierId, @Note, @CreatedBy
+        @ReceiptDate, @EmployeeId, @SupplierId, @TotalPrice, @Note, @CreatedBy
     );
 END
 GO
 
 -- Đọc InboundReceipt (READ động)
-CREATE PROCEDURE InboundReceipt_Read
+CREATE OR ALTER PROCEDURE InboundReceipt_Read
     @Id INT = NULL,
     @ReceiptDateStart DATETIME = NULL,
     @ReceiptDateEnd DATETIME = NULL,
@@ -932,6 +937,7 @@ BEGIN
             ReceiptDate,
             EmployeeId,
             SupplierId,
+            TotalPrice,
             Note,
             CreatedBy,
             CreatedDate,
@@ -1021,11 +1027,12 @@ GO
 
 
 -- Cập nhật InboundReceipt
-CREATE PROCEDURE InboundReceipt_Update
+CREATE OR ALTER PROCEDURE InboundReceipt_Update
     @Id INT,
     @ReceiptDate DATETIME,
     @EmployeeId INT,
     @SupplierId INT,
+    @TotalPrice INT,
     @Note NVARCHAR(255),
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1037,6 +1044,7 @@ BEGIN
         ReceiptDate = @ReceiptDate,
         EmployeeId = @EmployeeId,
         SupplierId = @SupplierId,
+        TotalPrice = @TotalPrice,
         Note = @Note,
         LastModifiedBy = @LastModifiedBy,
         LastModifiedDate = GETDATE()
@@ -1047,7 +1055,7 @@ GO
 
 
 -- Xóa mềm InboundReceipt
-CREATE PROCEDURE InboundReceipt_SoftDelete
+CREATE OR ALTER PROCEDURE InboundReceipt_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1065,7 +1073,7 @@ END
 GO
 
 -- Tạo mới InboundDetail
-CREATE PROCEDURE InboundDetail_Create
+CREATE OR ALTER PROCEDURE InboundDetail_Create
     @InboundReceiptId INT,
     @ProductId INT,
     @Quantity INT,
@@ -1087,7 +1095,7 @@ END
 GO
 
 -- Đọc InboundDetail
-CREATE PROCEDURE InboundDetail_Read
+CREATE OR ALTER PROCEDURE InboundDetail_Read
     @Id INT = NULL,
     @InboundReceiptId INT = NULL,
     @ProductId INT = NULL,
@@ -1197,7 +1205,7 @@ END
 GO
 
 -- Cập nhật InboundDetail
-CREATE PROCEDURE InboundDetail_Update
+CREATE OR ALTER PROCEDURE InboundDetail_Update
     @Id INT,
     @InboundReceiptId INT,
     @ProductId INT,
@@ -1222,7 +1230,7 @@ END
 GO
 
 -- Xóa mềm InboundDetail
-CREATE PROCEDURE InboundDetail_SoftDelete
+CREATE OR ALTER PROCEDURE InboundDetail_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1240,10 +1248,12 @@ END
 GO
 
 -- Tạo mới OutboundReceipt
-CREATE PROCEDURE OutboundReceipt_Create
+CREATE OR ALTER PROCEDURE OutboundReceipt_Create
     @ReceiptDate DATETIME,
     @EmployeeId INT,
     @CustomerId INT,
+    @TotalPrice INT,
+    @Status NVARCHAR(50),
     @Note NVARCHAR(255) = NULL,
     @CreatedBy NVARCHAR(32)
 AS
@@ -1252,17 +1262,17 @@ BEGIN
 
     INSERT INTO OutboundReceipt
     (
-        ReceiptDate, EmployeeId, CustomerId, Note, CreatedBy
+        ReceiptDate, EmployeeId, CustomerId, Status, Note, CreatedBy
     )
     VALUES
     (
-        @ReceiptDate, @EmployeeId, @CustomerId, @Note, @CreatedBy
+        @ReceiptDate, @EmployeeId, @CustomerId, @Status, @Note, @CreatedBy
     );
 END
 GO
 
 -- Đọc OutboundReceipt
-CREATE PROCEDURE OutboundReceipt_Read
+CREATE OR ALTER PROCEDURE OutboundReceipt_Read
     @Id INT = NULL,
     @ReceiptDateStart DATETIME = NULL,
     @ReceiptDateEnd DATETIME = NULL,
@@ -1285,6 +1295,8 @@ BEGIN
             ReceiptDate,
             EmployeeId,
             CustomerId,
+            TotalPrice,
+            Status,
             Note,
             CreatedBy,
             CreatedDate,
@@ -1373,11 +1385,13 @@ END
 GO
 
 -- Cập nhật OutboundReceipt
-CREATE PROCEDURE OutboundReceipt_Update
+CREATE OR ALTER PROCEDURE OutboundReceipt_Update
     @Id INT,
     @ReceiptDate DATETIME,
     @EmployeeId INT,
     @CustomerId INT,
+    @TotalPrice INT,
+    @Status NVARCHAR(50),
     @Note NVARCHAR(255),
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1389,6 +1403,8 @@ BEGIN
         ReceiptDate = @ReceiptDate,
         EmployeeId = @EmployeeId,
         CustomerId = @CustomerId,
+        TotalPrice = @TotalPrice,
+        Status = @Status,
         Note = @Note,
         LastModifiedBy = @LastModifiedBy,
         LastModifiedDate = GETDATE()
@@ -1398,7 +1414,7 @@ END
 GO
 
 -- Xóa mềm OutboundReceipt
-CREATE PROCEDURE OutboundReceipt_SoftDelete
+CREATE OR ALTER PROCEDURE OutboundReceipt_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS
@@ -1416,7 +1432,7 @@ END
 GO
 
 -- Tạo mới OutboundDetail
-CREATE PROCEDURE OutboundDetail_Create
+CREATE OR ALTER PROCEDURE OutboundDetail_Create
     @OutboundReceiptId INT,
     @ProductId INT,
     @Quantity INT,
@@ -1438,7 +1454,7 @@ END
 GO
 
 -- Đọc OutboundDetail
-CREATE PROCEDURE OutboundDetail_Read
+CREATE OR ALTER PROCEDURE OutboundDetail_Read
     @Id INT = NULL,
     @OutboundReceiptId INT = NULL,
     @ProductId INT = NULL,
@@ -1548,7 +1564,7 @@ END
 GO
 
 -- Cập nhật OutboundDetail
-CREATE PROCEDURE OutboundDetail_Update
+CREATE OR ALTER PROCEDURE OutboundDetail_Update
     @Id INT,
     @OutboundReceiptId INT,
     @ProductId INT,
@@ -1573,7 +1589,7 @@ END
 GO
 
 -- Xóa mềm OutboundDetail
-CREATE PROCEDURE OutboundDetail_SoftDelete
+CREATE OR ALTER PROCEDURE OutboundDetail_SoftDelete
     @Id INT,
     @LastModifiedBy NVARCHAR(32)
 AS

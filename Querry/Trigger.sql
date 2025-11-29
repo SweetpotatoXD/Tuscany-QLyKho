@@ -177,4 +177,74 @@ BEGIN
     INNER JOIN deleted D ON P.Id = D.ProductId
     WHERE P.IsDeleted = 0 AND D.IsDeleted = 0; -- D.IsDeleted = 0: đảm bảo chi tiết bị xóa là bản ghi đang hoạt động
 END
+<<<<<<< HEAD
 GO
+=======
+GO
+
+-- Tính Debt Customer
+CREATE TRIGGER TR_OutboundReceipt_Insert
+ON OutboundReceipt
+AFTER INSERT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE C
+    SET C.Debt = CASE 
+                    WHEN COALESCE(C.Debt,0) + I.TotalPrice < 0 THEN 0
+                    ELSE COALESCE(C.Debt,0) + I.TotalPrice
+                 END
+    FROM Customer C
+    JOIN Inserted I ON C.Id = I.CustomerId
+    WHERE I.Status = N'Chưa thanh toán' AND I.IsDeleted = 0;
+END;
+GO
+
+CREATE TRIGGER TR_OutboundReceipt_Update
+ON OutboundReceipt
+AFTER UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE C
+    SET C.Debt = CASE 
+                    WHEN COALESCE(C.Debt,0) + Delta.DeltaDebt < 0 THEN 0
+                    ELSE COALESCE(C.Debt,0) + Delta.DeltaDebt
+                 END
+    FROM Customer C
+    JOIN (
+        SELECT 
+            COALESCE(I.CustomerId, D.CustomerId) AS CustomerId,
+            SUM(
+                (CASE WHEN I.Status = N'Chưa thanh toán' AND I.IsDeleted = 0 THEN I.TotalPrice ELSE 0 END)
+              - (CASE WHEN D.Status = N'Chưa thanh toán' AND D.IsDeleted = 0 THEN D.TotalPrice ELSE 0 END)
+            ) AS DeltaDebt
+        FROM Inserted I
+        FULL OUTER JOIN Deleted D ON I.Id = D.Id
+        GROUP BY COALESCE(I.CustomerId, D.CustomerId)
+    ) AS Delta
+    ON C.Id = Delta.CustomerId
+    WHERE Delta.DeltaDebt <> 0;
+END;
+GO
+
+CREATE TRIGGER TR_OutboundReceipt_HardDelete
+ON OutboundReceipt
+AFTER DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    UPDATE C
+    SET C.Debt = CASE 
+                    WHEN COALESCE(C.Debt,0) - D.TotalPrice < 0 THEN 0
+                    ELSE COALESCE(C.Debt,0) - D.TotalPrice
+                 END
+    FROM Customer C
+    JOIN Deleted D ON C.Id = D.CustomerId
+    WHERE D.Status = N'Chưa thanh toán' AND D.IsDeleted = 0;
+END;
+GO
+>>>>>>> CALL-API

@@ -79,6 +79,10 @@ namespace GioiThieuCty.Controllers
             DateTime? ReceiptDate,
             int? EmployeeId,
             int? SupplierId,
+<<<<<<< HEAD
+=======
+            int? TotalPrice,
+>>>>>>> CALL-API
             string? Note,
             string? CreatedBy)
         {
@@ -90,6 +94,10 @@ namespace GioiThieuCty.Controllers
                     ReceiptDate = ReceiptDate ?? DateTime.Now,
                     EmployeeId = EmployeeId,
                     SupplierId = SupplierId,
+<<<<<<< HEAD
+=======
+                    TotalPrice = TotalPrice,
+>>>>>>> CALL-API
                     Note = Note,
                     CreatedBy = CreatedBy,
                     CreatedDate = DateTime.Now,
@@ -128,6 +136,10 @@ namespace GioiThieuCty.Controllers
             DateTime? ReceiptDate,
             int? EmployeeId,
             int? SupplierId,
+<<<<<<< HEAD
+=======
+            int? TotalPrice,
+>>>>>>> CALL-API
             string? Note,
             string? LastModifiedBy)
         {
@@ -138,11 +150,19 @@ namespace GioiThieuCty.Controllers
                     new SqlParameter("@ReceiptDate", (object)ReceiptDate ?? DBNull.Value),
                     new SqlParameter("@EmployeeId", (object)EmployeeId ?? DBNull.Value),
                     new SqlParameter("@SupplierId", (object)SupplierId ?? DBNull.Value),
+<<<<<<< HEAD
+=======
+                    new SqlParameter("@TotalPrice", (object)TotalPrice ?? DBNull.Value),
+>>>>>>> CALL-API
                     new SqlParameter("@Note", (object)Note ?? DBNull.Value),
                     new SqlParameter("@LastModifiedBy", (object)LastModifiedBy ?? DBNull.Value)
                 };
 
+<<<<<<< HEAD
                 await _context.Database.ExecuteSqlRawAsync("EXEC InboundReceipt_Update @Id, @ReceiptDate, @EmployeeId, @SupplierId, @Note, @LastModifiedBy", parameters);
+=======
+                await _context.Database.ExecuteSqlRawAsync("EXEC InboundReceipt_Update @Id, @ReceiptDate, @EmployeeId, @SupplierId, @TotalPrice, @Note, @LastModifiedBy", parameters);
+>>>>>>> CALL-API
 
                 return Ok(new ResultT<string> { IsSuccess = true, Data = "Updated successfully" });
             }
@@ -162,6 +182,7 @@ namespace GioiThieuCty.Controllers
                 string deleteDetailSql = @"UPDATE InboundDetail SET IsDeleted = 1, LastModifiedBy = @LastModifiedBy, LastModifiedDate = GETDATE() WHERE InboundReceiptId = @Id AND IsDeleted = 0";
 
                 var detailParams = new[] {
+<<<<<<< HEAD
                     new SqlParameter("@Id", id),
                     new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
                 };
@@ -172,6 +193,18 @@ namespace GioiThieuCty.Controllers
                         new SqlParameter("@Id", id),
                         new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
                     };
+=======
+            new SqlParameter("@Id", id),
+            new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
+        };
+
+                await _context.Database.ExecuteSqlRawAsync(deleteDetailSql, detailParams);
+
+                var masterParams = new[] {
+            new SqlParameter("@Id", id),
+            new SqlParameter("@LastModifiedBy", (object)lastModifiedBy ?? DBNull.Value)
+        };
+>>>>>>> CALL-API
 
                 await _context.Database.ExecuteSqlRawAsync("EXEC InboundReceipt_SoftDelete @Id, @LastModifiedBy", masterParams);
 
@@ -191,4 +224,8 @@ namespace GioiThieuCty.Controllers
             }
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> CALL-API

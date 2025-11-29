@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Xuất Kho</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="stylesheet" href="css/xuat.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</head>
+<body>
+    <div class="ui inverted menu">
+        <div class="ui container">
+            <a class="item" href="TrangChu.html">Trang chủ</a>
+            <a class="item" href="Nhap.html">Nhập kho</a>
+            <a class="item active" href="Xuat.html">Xuất kho</a>
+            <a class="item" href="NhanVien.html">Nhân viên</a>
+            <a class="item" href="NhaCungCap.html">Nhà cung cấp</a>
+            <a class="item" href="KhachHang.html">Khách hàng</a>
+            <a class="item" href="SanPham.html">Sản phẩm</a>
+            <div class="right menu" id="authMenu"></div>
+        </div>
+    </div>
+
+    <div class="ui container" style="margin-top: 20px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h2 class="ui header" style="margin: 0;">📤 Quản Lý Phiếu Xuất</h2>
+            <div>
+                <button class="ui teal basic button" id="btnToggleFilter"><i class="filter icon"></i> Bộ lọc</button>
+                <button class="ui teal basic button" id="btnAdd"><i class="plus icon"></i> Tạo phiếu xuất</button>
+            </div>
+        </div>
+
+        <div id="filterArea" style="display: none;">
+            <div class="ui segment secondary">
+                <div class="ui form">
+                    <div class="five fields">
+                        <div class="field"><label>Mã phiếu xuất</label><input type="number" id="searchId" placeholder="ID..."></div>
+                        <div class="field">
+                            <label>Nhân viên</label>
+                            <select class="ui dropdown" id="searchEmployee">
+                                <option value="">-- Tất cả --</option>
+                            </select>
+                        </div>
+                        <div class="field">
+                            <label>Khách hàng</label>
+                            <select class="ui dropdown" id="searchCustomer">
+                                <option value="">-- Tất cả --</option>
+                            </select>
+                        </div>
+                        <div class="field"><label>Từ ngày</label><input type="date" id="searchDateStart"></div>
+                        <div class="field"><label>Đến ngày</label><input type="date" id="searchDateEnd"></div>
+                    </div>
+
+                    <div class="fields">
+                        <div class="eight wide field">
+                            <label>Tìm kiếm theo ghi chú</label>
+                            <input type="text" id="searchNote" placeholder="Nhập từ khóa trong ghi chú...">
+                        </div>
+                        <div class="four wide field">
+                            <label>Sắp xếp Tổng tiền</label>
+                            <select class="ui fluid dropdown" id="sortTotalPrice">
+                                <option value="">Mặc định</option>
+                                <option value="asc">⬆️ Tăng dần</option>
+                                <option value="desc">⬇️ Giảm dần</option>
+                            </select>
+                        </div>
+
+                        <div class="four wide field" style="text-align: right; align-self: flex-end; padding-top: 23px;">
+                            <button class="ui teal button" id="btnSearch"><i class="search icon"></i> Tìm kiếm</button>
+                            <button class="ui button" id="btnClearSearch"><i class="eraser icon"></i> Xóa lọc</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="ui celled table" id="receiptTable">
+            <thead>
+                <tr>
+                    <th>Mã phiếu xuất</th>
+                    <th>Ngày xuất</th>
+                    <th>Nhân viên</th>
+                    <th>Khách hàng</th>
+                    <th>Trạng thái</th>
+                    <th>Tổng tiền</th>
+                    <th>Ghi chú</th>
+                    <th class="action-col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <div style="text-align: center; color: #999; margin-top: 20px; margin-bottom: 50px;">
+            <i class="check circle outline icon"></i> Đã hiển thị hết danh sách
+        </div>
+    </div>
+
+    <div class="ui modal" id="receiptModal">
+        <i class="close icon"></i>
+        <div class="header" id="modalHeader">Thông tin phiếu xuất</div>
+
+        <div class="content scrolling">
+            <form class="ui form" id="receiptForm" novalidate>
+                <input type="hidden" id="hiddenId">
+
+                <h4 class="ui dividing header">I. Thông tin chung</h4>
+                <div class="fields">
+                    <div class="field">
+                        <label>Mã phiếu xuất</label>
+                        <input type="text" id="receiptId" placeholder="Tự động" disabled>
+                    </div>
+                    <div class="required field">
+                        <label>Ngày xuất</label>
+                        <input type="datetime-local" id="receiptDate" required>
+                    </div>
+                    <div class="required field">
+                        <label>Nhân viên xuất</label>
+                        <select class="ui fluid search selection dropdown" id="employeeId" required>
+                            <option value="">-- Chọn Nhân viên --</option>
+                        </select>
+                    </div>
+                    <div class="required field">
+                        <label>Khách hàng</label>
+                        <select class="ui fluid search selection dropdown" id="customerId" required>
+                            <option value="">-- Chọn Khách hàng --</option>
+                        </select>
+                    </div>
+                    <div class="required field">
+                        <label>Nhà cung cấp</label>
+                        <select class="ui fluid search selection dropdown" id="filterSupplier">
+                            <option value="">-- Chọn Nhà cung cấp --</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <div class="required six wide field">
+                        <label>Trạng thái</label>
+                        <select class="ui fluid dropdown" id="status" required>
+                            <option value="Chưa thanh toán">Chưa thanh toán</option>
+                            <option value="Đã thanh toán">Đã thanh toán</option>
+                        </select>
+                    </div>
+                    <div class="ten wide field">
+                        <label>Ghi chú</label>
+                        <textarea id="note" rows="1"></textarea>
+                    </div>
+                </div>
+
+                <div class="ui error message" id="globalError" style="display: none;">
+                    <p id="globalErrorContent">Không để trống ô dữ liệu bắt buộc</p>
+                </div>
+
+                <h4 class="ui dividing header">II. Danh sách sản phẩm</h4>
+
+                <div id="productEntryArea">
+                    <div class="fields">
+                        <div class="five wide field required" style="position: relative;">
+                            <label>Sản phẩm</label>
+                            <select class="ui fluid search selection dropdown" id="prodId">
+                                <option value="">-- Chọn sản phẩm --</option>
+                            </select>
+                        </div>
+
+                        <div class="four wide field required">
+                            <label>Số lượng</label>
+                            <input type="number" id="prodQty" placeholder="SL">
+                        </div>
+                        <div class="four wide field required">
+                            <label>Đơn giá</label>
+                            <input type="number" id="prodPrice" placeholder="Giá xuất">
+                        </div>
+                        <div class="three wide field">
+                            <label>&nbsp;</label>
+                            <div style="display: flex; gap: 5px;">
+                                <button type="button" class="ui blue button" id="btnAddProductRow" style="flex: 1; padding-left: 0; padding-right: 0;">
+                                    <i class="plus icon"></i> Thêm
+                                </button>
+                                <button type="button" class="ui red button" id="btnCancelEdit" style="display: none; flex: 1; padding-left: 0; padding-right: 0;">
+                                    <i class="times icon"></i> Hủy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui error message" id="productError" style="display: none;">
+                        <p>Vui lòng nhập đầy đủ thông tin sản phẩm</p>
+                    </div>
+                </div>
+
+                <table class="ui celled table" id="detailTable">
+                    <thead>
+                        <tr>
+                            <th>Tên Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Đơn giá</th>
+                            <th>Thành tiền</th>
+                            <th class="action-col">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="3" style="text-align:right">Tổng cộng:</th>
+                            <th colspan="2" id="totalAmount">0 đ</th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <button type="submit" id="btnRealSubmit" style="display: none;"></button>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui black deny button">Hủy bỏ</div>
+            <div class="ui green right labeled icon button" id="btnSaveModal">
+                Lưu phiếu xuất <i class="checkmark icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/xuat.js"></script>
+</body>
+</html>
